@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" class="dark light">
+
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https:&#x2F;&#x2F;julia-hx.github.io&#x2F;">
+
+    
+
+    
+    
+    
+        <title>
+            
+                making this blog
+            
+        </title>
+
+        
+            <meta property="og:title"
+                  content="making this blog" />
+        
+    
+
+    
+        
+            <meta property="og:description" content="made with 💜 by julia.hx" />
+        
+    
+
+    
+        
+            <meta name="description" content="made with 💜 by julia.hx" />
+        
+    
+
+    
+    
+
+    
+    
+        <link href=https://julia-hx.github.io/fonts.css rel="stylesheet" />
+    
+
+    
+    
+
+    
+    
+
+    
+    <script defer src=https://julia-hx.github.io/js/codeblock.js></script>
+
+    
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+    
+    
+        <link rel="stylesheet"
+              type="text/css"
+              href="https://julia-hx.github.io/theme/light.css" />
+        <link id="darkModeStyle"
+              rel="stylesheet"
+              type="text/css"
+              href="https://julia-hx.github.io/theme/dark.css" />
+    
+
+    <!-- Set the correct theme in the script -->
+
+    
+        <script src=https://julia-hx.github.io/js/themetoggle.js></script>
+
+        
+            <script>setTheme(getSavedTheme());</script>
+        
+    
+
+
+    <link rel="stylesheet"
+          type="text/css"
+          media="screen"
+          href="https://julia-hx.github.io/main.css" />
+
+    
+
+    </head>
+
+
+    <body>
+        <div class="left-content">
+            
+            
+        </div>
+
+        <div class="content">
+            <nav>
+    <div class="left-nav">
+        
+            <a href=https:&#x2F;&#x2F;julia-hx.github.io&#x2F;>julia.hx</a>
+        
+
+
+        <div class="socials">
+            
+                <a rel="me" href="https:&#x2F;&#x2F;github.com&#x2F;julia-hx&#x2F;" class="social">
+                    <img alt="github" src="https://julia-hx.github.io/icons/social/github.svg">
+                </a>
+            
+                <a rel="me" href="https:&#x2F;&#x2F;linktr.ee&#x2F;julia.hx" class="social">
+                    <img alt="linktree" src="https://julia-hx.github.io/icons/social/linktree.svg">
+                </a>
+            
+        </div>
+    </div>
+
+    <div class="right-nav">
+        
+            <a href=https://julia-hx.github.io/posts style="margin-right: 0.5em">&#x2F;posts</a>
+        
+            <a href=https://julia-hx.github.io/projects style="margin-right: 0.5em">&#x2F;projects</a>
+        
+            <a href=https://julia-hx.github.io/tags style="margin-right: 0.5em">&#x2F;tags</a>
+        
+
+        
+
+        
+            <a id="dark-mode-toggle"
+            onclick="toggleTheme(); event.preventDefault();"
+            href="#">
+                <img src="https://julia-hx.github.io/icons/sun.svg"
+                    id="sun-icon"
+                    style="filter: invert(1)"
+                    alt="Light" />
+                <img src=https://julia-hx.github.io/icons/moon.svg id="moon-icon" alt="Dark" />
+            </a>
+
+            <!-- Initialize the theme toggle icons -->
+            <script>updateItemToggleTheme()</script>
+        
+    </div>
+</nav>
+
+
+            
+            
+    
+<div class="visible-element-observer-root" data-selector="main article p">
+    <main>
+        <article>
+            <div class="title">
+                
+                
+    
+    <div class="page-header">
+        making this blog
+    </div>
+    
+
+
+                <div class="meta">
+                    
+                        Posted on <time>2025-07-09</time>
+                    
+
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+
+                    
+                    
+
+                    
+                    
+                        <span class="tags-label"> :: </span>
+                        <span class="tags">
+                                <a href="https://julia-hx.github.io/tags/rust/"
+                                   class="post-tag">rust</a>
+                            
+                                <a href="https://julia-hx.github.io/tags/code/"
+                                   class="post-tag">code</a>
+                            
+                                <a href="https://julia-hx.github.io/tags/web/"
+                                   class="post-tag">web</a>
+                            
+                        </span>
+                    
+
+                    
+
+                </div>
+            </div>
+
+            
+
+            <section class="body">
+                <p>Blogs are neat - harking back to an age of a purer internet, with weird little ecosystems of personal home pages, with html and css written in Notepad++ and no logins or trackers in sight.
+I wanted to carve out such a weird little corner of the internet for myself and my projects and thoughts.</p>
+<p><img src="../cameronsworld_3.png" alt="Camerons World - a 90&#39;s internet nostalgia site" /></p>
+<p><em>From <a href="https://www.cameronsworld.net/">Cameron's World</a> - a 90's internet nostalgia site.</em></p>
+<p>A static site generator seemed like the way to do it. It's the best of both worlds (the modern and the nostalgic) -  serve html and css and js without any need for a database, server, content management system, login or other bloat and fluff, without
+needing to actually write all of that html and css and js, and resting more or less assured that it would render fine on different devices and browsers and so on. And you can just host a personal blog on github.</p>
+<p>In order for this process to be enjoyable I needed to find the right combination of a generator and a template to start from, and having generally been interested in the Rust language lately I found <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/not-matthias/apollo">Apollo</a>.</p>
+<p>Things I like about this combo:</p>
+<ul>
+<li>super fast to iterate, build, and serve</li>
+<li>change detection while iterating locally is immediate</li>
+<li>authoring in markdown</li>
+<li>support for <code>code syntax highlighting</code></li>
+<li>static content such as images gets copied over to built site as expected (including plopping a favicon.ico in the content root)</li>
+<li>customizing the theme is intuitive</li>
+</ul>
+<p>Getting a first version of a site up took very little time, and so far I've found everything to kind of work like I want it to. The design choice to install Zola as a single binary on your system and only have the template and content data in your repo sits right with me - no building of code or downloading of dependency trees, it's fast, reliable so far, and spits out useful errors when I break something.</p>
+<p>The Apollo template was a lucky find - it's actually minimal and includes exactly the stuff I want to have: landing page, articles sorted by date, gallery of projects, and tags. Didn't love the Search feature but it was simple to turn off. For social links I just went with my linktree - there wasn't an icon for it included but making one in Inkscape took three minutes (linktree having the foresight to make their icon out of simple rectangles), and getting the generator to pick it up was just a question of putting it next to the other icon svg files.</p>
+<p>This is what the markdown the landing page is generated from looks like:</p>
+<pre data-lang="markdown" style="background-color:#2b303b;color:#c0c5ce;" class="language-markdown "><code class="language-markdown" data-lang="markdown"><span>+++
+</span><span>template = &quot;homepage.html&quot;
+</span><span>+++
+</span><span>
+</span><span>&lt;</span><span style="color:#bf616a;">style</span><span>&gt;
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-hero </span><span>{
+</span><span>    text-align: center;
+</span><span>    padding: </span><span style="color:#d08770;">2rem 0</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-hero-title </span><span>{
+</span><span>    font-size: </span><span style="color:#d08770;">3rem</span><span>;
+</span><span>    margin-bottom: </span><span style="color:#d08770;">1rem</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-hero-subtitle </span><span>{
+</span><span>    font-size: </span><span style="color:#d08770;">1.25rem</span><span>;
+</span><span>    margin-bottom: </span><span style="color:#d08770;">1rem</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-footer </span><span>{
+</span><span>	font-size: </span><span style="color:#d08770;">0.8rem</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-image </span><span>{
+</span><span>  display: block;
+</span><span>  margin-left: auto;
+</span><span>  margin-right: auto;
+</span><span>  width: </span><span style="color:#d08770;">50%</span><span>;
+</span><span>}
+</span><span>
+</span><span>&lt;/</span><span style="color:#bf616a;">style</span><span>&gt;
+</span><span>
+</span><span>&lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-hero</span><span>&quot;&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">h1 </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-hero-title</span><span>&quot;&gt;hi I&#39;m julia! ✨&lt;/</span><span style="color:#bf616a;">h1</span><span>&gt;
+</span><span>	&lt;</span><span style="color:#bf616a;">img </span><span style="color:#d08770;">src</span><span>=&quot;</span><span style="color:#a3be8c;">hx_space_inverted.png</span><span>&quot; </span><span style="color:#d08770;">alt</span><span>=&quot;</span><span style="color:#a3be8c;">hx Space Inverted - abstract moody black and white image</span><span>&quot; </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-image</span><span>&quot;&gt; 
+</span><span>    &lt;</span><span style="color:#bf616a;">p </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-hero-subtitle</span><span>&quot;&gt;💜 ...and this is my blog. 💜&lt;/</span><span style="color:#bf616a;">p</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>
+</span><span style="color:#8fa1b3;"># about
+</span><span>
+</span><span>I like to make noise and art on computers and to </span><span style="color:#a3be8c;">```write code```</span><span>.
+</span><span>
+</span><span style="background-color:#4f5b66;color:#c0c5ce;">---
+</span><span>&lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-footer</span><span>&quot;&gt;
+</span><span>made with &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=&quot;</span><span style="color:#a3be8c;">https://www.getzola.org/</span><span>&quot;&gt;Zola&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;, &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=&quot;</span><span style="color:#a3be8c;">https://github.com/not-matthias/apollo</span><span>&quot;&gt;Apollo&lt;/</span><span style="color:#bf616a;">a</span><span>&gt; and 💜 by julia.hx
+</span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>
+</span></code></pre>
+<p>I've opted to version my generator project and static site separately - a python script (copy pasta from stack overflow with like two adjustments) takes care of copying over new files when I want to update the static site, and I get to be a control freak about when I actually want to publish:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>os
+</span><span style="color:#b48ead;">import </span><span>shutil
+</span><span>
+</span><span>root_src_dir = &#39;</span><span style="color:#a3be8c;">./public/</span><span>&#39; </span><span style="color:#65737e;"># zola build output
+</span><span>root_dst_dir = &#39;</span><span style="color:#a3be8c;">../julia-hx-blog/</span><span>&#39; </span><span style="color:#65737e;"># static site repo sitting next to generator repo
+</span><span>
+</span><span style="color:#b48ead;">for </span><span>src_dir, dirs, files </span><span style="color:#b48ead;">in </span><span>os.</span><span style="color:#bf616a;">walk</span><span>(root_src_dir):
+</span><span>    dst_dir = src_dir.</span><span style="color:#bf616a;">replace</span><span>(root_src_dir, root_dst_dir, </span><span style="color:#d08770;">1</span><span>)
+</span><span>    </span><span style="color:#b48ead;">if </span><span>not os.path.</span><span style="color:#bf616a;">exists</span><span>(dst_dir):
+</span><span>        os.</span><span style="color:#bf616a;">makedirs</span><span>(dst_dir)
+</span><span>    </span><span style="color:#b48ead;">for </span><span>file_ </span><span style="color:#b48ead;">in </span><span>files:
+</span><span>        src_file = os.path.</span><span style="color:#bf616a;">join</span><span>(src_dir, file_)
+</span><span>        dst_file = os.path.</span><span style="color:#bf616a;">join</span><span>(dst_dir, file_)
+</span><span>        </span><span style="color:#b48ead;">if </span><span>os.path.</span><span style="color:#bf616a;">exists</span><span>(dst_file):
+</span><span>            </span><span style="color:#65737e;"># in case of the src and dst are the same file
+</span><span>            </span><span style="color:#b48ead;">if </span><span>os.path.</span><span style="color:#bf616a;">samefile</span><span>(src_file, dst_file):
+</span><span>                </span><span style="color:#b48ead;">continue
+</span><span>            os.</span><span style="color:#bf616a;">remove</span><span>(dst_file)
+</span><span>        shutil.</span><span style="color:#bf616a;">copy</span><span>(src_file, dst_dir)
+</span></code></pre>
+<p>So far so good!</p>
+
+            </section>
+        </article>
+    </main>
+</div>
+
+
+
+            
+                
+            
+
+            
+        </div>
+
+        <div class="right-content">
+            
+    
+    
+
+        </div>
+    </body>
+
+</html>
