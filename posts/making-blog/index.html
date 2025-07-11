@@ -214,10 +214,10 @@
                 <p>Blogs are neat - harking back to an age of a purer internet, with weird little ecosystems of personal home pages, with html and css written in Notepad++ and no logins or trackers in sight.
 I wanted to carve out such a weird little corner of the internet for myself and my projects and thoughts.</p>
 <p><img src="../cameronsworld_3.png" alt="Camerons World - a 90&#39;s internet nostalgia site" /></p>
-<p><em>From <a href="https://www.cameronsworld.net/">Cameron's World</a> - a 90's internet nostalgia site.</em></p>
-<p>A static site generator seemed like the way to do it. It's the best of both worlds (the modern and the nostalgic) -  serve html and css and js without any need for a database, server, content management system, login or other bloat and fluff, without
-needing to actually write all of that html and css and js, and resting more or less assured that it would render fine on different devices and browsers and so on. And you can just host a personal blog on github.</p>
-<p>In order for this process to be enjoyable I needed to find the right combination of a generator and a template to start from, and having generally been interested in the Rust language lately I found <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/not-matthias/apollo">Apollo</a>.</p>
+<p><em>From <a href="https://www.cameronsworld.net/">Cameron's World</a> - a 90's internet GeoCities nostalgia site.</em></p>
+<p>A static site generator seemed like a decent enough compromise of the modern and the nostalgic/minimalist -  serve html and css and js without any need for a database, server, content management system, and as little fluff as possible,
+without needing to actually write all of that html and css and js. You can also rest more or less assured that the site renders on different devices and browsers.</p>
+<p>In order for this process to be enjoyable I needed to find the right combination of a generator and a template to start from. Having generally been interested in the Rust language lately I found <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/not-matthias/apollo">Apollo</a>.</p>
 <p>Things I like about this combo:</p>
 <ul>
 <li>super fast to iterate, build, and serve</li>
@@ -228,7 +228,7 @@ needing to actually write all of that html and css and js, and resting more or l
 <li>customizing the theme is intuitive</li>
 </ul>
 <p>Getting a first version of a site up took very little time, and so far I've found everything to kind of work like I want it to. The design choice to install Zola as a single binary on your system and only have the template and content data in your repo sits right with me - no building of code or downloading of dependency trees, it's fast, reliable so far, and spits out useful errors when I break something.</p>
-<p>The Apollo template was a lucky find - it's actually minimal and includes exactly the stuff I want to have: landing page, articles sorted by date, gallery of projects, and tags. Didn't love the Search feature but it was simple to turn off. For social links I just went with my linktree - there wasn't an icon for it included but making one in Inkscape took three minutes (linktree having the foresight to make their icon out of simple rectangles), and getting the generator to pick it up was just a question of putting it next to the other icon svg files.</p>
+<p>The Apollo template was a lucky find - it's actually minimal and includes exactly the stuff I want to have: landing page, articles sorted by date, gallery of projects, and tags. Didn't love the Search feature but it was simple to turn off.</p>
 <p>This is what the markdown the landing page is generated from looks like:</p>
 <pre data-lang="markdown" style="background-color:#2b303b;color:#c0c5ce;" class="language-markdown "><code class="language-markdown" data-lang="markdown"><span>+++
 </span><span>template = &quot;homepage.html&quot;
@@ -279,27 +279,8 @@ needing to actually write all of that html and css and js, and resting more or l
 </span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
 </span><span>
 </span></code></pre>
-<p>I've opted to version my generator project and static site separately - a python script (copy pasta from stack overflow with like two adjustments) takes care of copying over new files when I want to update the static site, and I get to be a control freak about when I actually want to publish:</p>
-<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>os
-</span><span style="color:#b48ead;">import </span><span>shutil
-</span><span>
-</span><span>root_src_dir = &#39;</span><span style="color:#a3be8c;">./public/</span><span>&#39; </span><span style="color:#65737e;"># zola build output
-</span><span>root_dst_dir = &#39;</span><span style="color:#a3be8c;">../julia-hx-blog/</span><span>&#39; </span><span style="color:#65737e;"># static site repo sitting next to generator repo
-</span><span>
-</span><span style="color:#b48ead;">for </span><span>src_dir, dirs, files </span><span style="color:#b48ead;">in </span><span>os.</span><span style="color:#bf616a;">walk</span><span>(root_src_dir):
-</span><span>    dst_dir = src_dir.</span><span style="color:#bf616a;">replace</span><span>(root_src_dir, root_dst_dir, </span><span style="color:#d08770;">1</span><span>)
-</span><span>    </span><span style="color:#b48ead;">if </span><span>not os.path.</span><span style="color:#bf616a;">exists</span><span>(dst_dir):
-</span><span>        os.</span><span style="color:#bf616a;">makedirs</span><span>(dst_dir)
-</span><span>    </span><span style="color:#b48ead;">for </span><span>file_ </span><span style="color:#b48ead;">in </span><span>files:
-</span><span>        src_file = os.path.</span><span style="color:#bf616a;">join</span><span>(src_dir, file_)
-</span><span>        dst_file = os.path.</span><span style="color:#bf616a;">join</span><span>(dst_dir, file_)
-</span><span>        </span><span style="color:#b48ead;">if </span><span>os.path.</span><span style="color:#bf616a;">exists</span><span>(dst_file):
-</span><span>            </span><span style="color:#65737e;"># in case of the src and dst are the same file
-</span><span>            </span><span style="color:#b48ead;">if </span><span>os.path.</span><span style="color:#bf616a;">samefile</span><span>(src_file, dst_file):
-</span><span>                </span><span style="color:#b48ead;">continue
-</span><span>            os.</span><span style="color:#bf616a;">remove</span><span>(dst_file)
-</span><span>        shutil.</span><span style="color:#bf616a;">copy</span><span>(src_file, dst_dir)
-</span></code></pre>
+<p>I've opted to version my generator project and static site separately - I like to be a control freak about versioning drafts where a push to the authoring repo doesn't autmatically publish. For when I do want to publish I have added some bash/python scipting that runs <code>zola build</code>, copies the output to the static site repo, commits and pushes the changes.</p>
+<p>Some more scripting will probably happen as I go along, for things such as making new posts. That way I can add cms-like features only where I really want them.</p>
 <p>So far so good!</p>
 
             </section>
