@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>julia.hx</title>
+    <subtitle>made with 💜 by julia.hx</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://julia-hx.github.io/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://julia-hx.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-07-09T00:00:00+00:00</updated>
+    <id>https://julia-hx.github.io/atom.xml</id>
+    <entry xml:lang="en">
+        <title>making this blog</title>
+        <published>2025-07-09T00:00:00+00:00</published>
+        <updated>2025-07-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            julia.hx
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://julia-hx.github.io/posts/making-blog/"/>
+        <id>https://julia-hx.github.io/posts/making-blog/</id>
+        
+        <content type="html" xml:base="https://julia-hx.github.io/posts/making-blog/">&lt;p&gt;Blogs are neat - harking back to an age of a purer internet, with weird little ecosystems of personal home pages, with html and css written in Notepad++ and no logins or trackers in sight.
+I wanted to carve out such a weird little corner of the internet for myself and my projects and thoughts.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;..&#x2F;cameronsworld_3.png&quot; alt=&quot;Cameron&amp;#39;s World - a 90&amp;#39;s internet nostalgia site&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;From &lt;a href=&quot;https:&#x2F;&#x2F;www.cameronsworld.net&#x2F;&quot;&gt;Cameron&#x27;s World&lt;&#x2F;a&gt; - a 90&#x27;s internet GeoCities nostalgia site.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A static site generator seemed like a decent enough compromise of the modern and the nostalgic&#x2F;minimalist -  serve html and css and js without any need for a database, server, content management system, and as little fluff as possible,
+without needing to actually write all of that html and css and js. You can also rest more or less assured that the site renders on different devices and browsers.&lt;&#x2F;p&gt;
+&lt;p&gt;In order for this process to be enjoyable I needed to find the right combination of a generator and a template to start from. Having generally been interested in the Rust language lately I found &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;not-matthias&#x2F;apollo&quot;&gt;Apollo&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Things I like about this combo:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;super fast to iterate, build, and serve&lt;&#x2F;li&gt;
+&lt;li&gt;change detection while iterating locally is immediate&lt;&#x2F;li&gt;
+&lt;li&gt;authoring in markdown&lt;&#x2F;li&gt;
+&lt;li&gt;support for &lt;code&gt;code syntax highlighting&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;static content such as images gets copied over to built site as expected (including plopping a favicon.ico in the content root)&lt;&#x2F;li&gt;
+&lt;li&gt;customizing the theme is intuitive&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Getting a first version of a site up took very little time, and so far I&#x27;ve found everything to kind of work like I want it to. The design choice to install Zola as a single binary on your system and only have the template and content data in your repo sits right with me - no building of code or downloading of dependency trees, it&#x27;s fast, reliable so far, and spits out useful errors when I break something.&lt;&#x2F;p&gt;
+&lt;p&gt;The Apollo template was a lucky find - it&#x27;s actually minimal and includes exactly the stuff I want to have: landing page, articles sorted by date, gallery of projects, and tags. Didn&#x27;t love the Search feature but it was simple to turn off.&lt;&#x2F;p&gt;
+&lt;p&gt;This is what the markdown the landing page is generated from looks like:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;+++
+&lt;&#x2F;span&gt;&lt;span&gt;template = &amp;quot;homepage.html&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;+++
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;style&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;homepage-hero &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    text-align: center;
+&lt;&#x2F;span&gt;&lt;span&gt;    padding: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2rem 0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;homepage-hero-title &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    font-size: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    margin-bottom: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;homepage-hero-subtitle &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    font-size: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1.25rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    margin-bottom: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;homepage-footer &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;	font-size: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.8rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;homepage-image &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  display: block;
+&lt;&#x2F;span&gt;&lt;span&gt;  margin-left: auto;
+&lt;&#x2F;span&gt;&lt;span&gt;  margin-right: auto;
+&lt;&#x2F;span&gt;&lt;span&gt;  width: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;50%&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;style&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;homepage-hero&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;h1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;homepage-hero-title&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;hi I&amp;#39;m julia! ✨&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;h1&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;img &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;src&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;hx_space_inverted.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;alt&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;hx Space Inverted - abstract moody black and white image&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;homepage-image&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;homepage-hero-subtitle&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;💜 ...and this is my blog. 💜&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;# about
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;I like to make noise and art on computers and to &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;```write code```&lt;&#x2F;span&gt;&lt;span&gt;.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;background-color:#4f5b66;color:#c0c5ce;&quot;&gt;---
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;homepage-footer&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;made with &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;href&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;https:&#x2F;&#x2F;www.getzola.org&#x2F;&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;Zola&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;, &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;href&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;not-matthias&#x2F;apollo&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;Apollo&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; and 💜 by julia.hx
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I&#x27;ve opted to version my generator project and static site separately - I like to be a control freak about versioning drafts where a push to the authoring repo doesn&#x27;t automatically publish. For when I do want to publish I have added some bash&#x2F;python scripting that runs &lt;code&gt;zola build&lt;&#x2F;code&gt;, copies the output to the static site repo, commits and pushes the changes.&lt;&#x2F;p&gt;
+&lt;p&gt;Some more scripting will probably happen as I go along, for things such as making new posts. That way I can add cms-like features only where I really want them.&lt;&#x2F;p&gt;
+&lt;p&gt;So far so good!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
