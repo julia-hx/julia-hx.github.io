@@ -328,7 +328,6 @@ Let&#x27;s create a ts file that can contain global state, &#x2F;src&#x2F;global
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    import { Icon, Sun, Moon } from &amp;quot;svelte-hero-icons&amp;quot;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    import { uiMode } from &amp;quot;..&#x2F;globals.svelte.js&amp;quot;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
-&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &#x2F;&#x2F;export const uiMode = $state({ isDarkMode : true });&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &#x2F;** @type {HTMLElement} *&#x2F;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    let moonIcon;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &#x2F;** @type {HTMLElement} *&#x2F;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
