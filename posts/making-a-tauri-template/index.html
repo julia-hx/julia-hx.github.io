@@ -249,7 +249,7 @@ Instead of relying on a virtual DOM it outputs "compiled" html and js. I also li
 <p>In order to create a shared base layout for both of these pages, so I don't need to reproduce shared elements in multiple places, I create /src/+layout.svelte next to /src/+page.svelte.</p>
 <p>Multiple layouts can be added to a svelte routes tree, and are applied to all children pages until another layout is found, which is then applied to all following children pages, and so on. For this template a single layout will suffice - let's start with some boilerplate that will render all child pages without adding anything to them at the moment:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script lang=&quot;ts&quot;&gt;</span></span>
-<span class="giallo-l"><span>	let { children } = $props();</span></span>
+<span class="giallo-l"><span>    let { children } = $props();</span></span>
 <span class="giallo-l"><span>&lt;/script&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>{@render children()}</span></span></code></pre>
@@ -262,17 +262,17 @@ Instead of relying on a virtual DOM it outputs "compiled" html and js. I also li
 <span class="giallo-l"><span>--routes/</span></span></code></pre>
 <p>In the Header, we'll add some basic navigation:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;nav&gt;</span></span>
-<span class="giallo-l"><span>	&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
-<span class="giallo-l"><span>	&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>    &lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>    &lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
 <span class="giallo-l"><span>&lt;/nav&gt;</span></span></code></pre>
 <p>It's this simple to link to pages in the routes folder.</p>
 <p>For now, the Footer will just contain this:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;span&gt;made by julia&lt;/span&gt;</span></span></code></pre>
 <p>Now to include these two components in the main layout, we need to edit src/+layout.svelte:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script lang=&quot;ts&quot;&gt;</span></span>
-<span class="giallo-l"><span>	let { children } = $props();</span></span>
-<span class="giallo-l"><span>	import Header from &quot;../components/Header.svelte&quot;;</span></span>
-<span class="giallo-l"><span>	import Footer from &quot;../components/Footer.svelte&quot;;</span></span>
+<span class="giallo-l"><span>    let { children } = $props();</span></span>
+<span class="giallo-l"><span>    import Header from &quot;../components/Header.svelte&quot;;</span></span>
+<span class="giallo-l"><span>    import Footer from &quot;../components/Footer.svelte&quot;;</span></span>
 <span class="giallo-l"><span>&lt;/script&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>&lt;Header&gt;&lt;/Header&gt;</span></span>
@@ -298,94 +298,94 @@ Instead of relying on a virtual DOM it outputs "compiled" html and js. I also li
 <span class="giallo-l"><span>//...</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>export default defineConfig(async () =&gt; ({</span></span>
-<span class="giallo-l"><span>	plugins: [</span></span>
-<span class="giallo-l"><span>		sveltekit(),</span></span>
-<span class="giallo-l"><span>		tailwindcss(),</span></span>
-<span class="giallo-l"><span>	],</span></span></code></pre>
+<span class="giallo-l"><span>    plugins: [</span></span>
+<span class="giallo-l"><span>        sveltekit(),</span></span>
+<span class="giallo-l"><span>        tailwindcss(),</span></span>
+<span class="giallo-l"><span>    ],</span></span></code></pre>
 <p>Create /src/app.css next to /src/app.html and add this import:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>@import &quot;tailwindcss&quot;;</span></span></code></pre>
 <p>Lastly, we need to import the new css file into our layout in src/routes/+layout.svelte:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script lang=&quot;ts&quot;&gt;</span></span>
-<span class="giallo-l"><span>	let { children } = $props();</span></span>
-<span class="giallo-l"><span>	import Header from &quot;../components/Header.svelte&quot;;</span></span>
-<span class="giallo-l"><span>	import Footer from &quot;../components/Footer.svelte&quot;;</span></span>
-<span class="giallo-l"><span>	import &quot;.../app.css&quot;</span></span>
+<span class="giallo-l"><span>    let { children } = $props();</span></span>
+<span class="giallo-l"><span>    import Header from &quot;../components/Header.svelte&quot;;</span></span>
+<span class="giallo-l"><span>    import Footer from &quot;../components/Footer.svelte&quot;;</span></span>
+<span class="giallo-l"><span>    import &quot;.../app.css&quot;</span></span>
 <span class="giallo-l"><span>&lt;/script&gt;</span></span></code></pre>
 <p>Now we can start using the Tailwind classes!</p>
 <h1 id="home-page"><a class="zola-anchor" href="#home-page" aria-label="Anchor link for: home-page">home page</a></h1>
 <p>Let's move the default home page to a different file for reference (or just delete it), and create a much more bare-bones one:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script&gt;</span></span>
-<span class="giallo-l"><span>	import { invoke } from &quot;@tauri-apps/api/core&quot;;</span></span>
+<span class="giallo-l"><span>    import { invoke } from &quot;@tauri-apps/api/core&quot;;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	let message = $state(&quot;Hello world!&quot;);</span></span>
+<span class="giallo-l"><span>    let message = $state(&quot;Hello world!&quot;);</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	async function printTestMessage() {</span></span>
-<span class="giallo-l"><span>		await invoke(&quot;print_message&quot;, { message });</span></span>
-<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>    async function printTestMessage() {</span></span>
+<span class="giallo-l"><span>        await invoke(&quot;print_message&quot;, { message });</span></span>
+<span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"><span>&lt;/script&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>&lt;div&gt;</span></span>
-<span class="giallo-l"><span>	&lt;span&gt;Tauri Template&lt;/span&gt;</span></span>
-<span class="giallo-l"><span>	&lt;form onsubmit={printTestMessage}&gt;</span></span>
-<span class="giallo-l"><span>		&lt;input bind:value={message}/&gt;</span></span>
-<span class="giallo-l"><span>		&lt;button type=&quot;submit&quot;&gt;Print&lt;/button&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/form&gt;</span></span>
+<span class="giallo-l"><span>    &lt;span&gt;Tauri Template&lt;/span&gt;</span></span>
+<span class="giallo-l"><span>    &lt;form onsubmit={printTestMessage}&gt;</span></span>
+<span class="giallo-l"><span>        &lt;input bind:value={message}/&gt;</span></span>
+<span class="giallo-l"><span>        &lt;button type=&quot;submit&quot;&gt;Print&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/form&gt;</span></span>
 <span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
 <p>We need to add the invoked function to Rust. We do this by modifying /src-tauri/src/lib.rs:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>#[tauri::command]</span></span>
 <span class="giallo-l"><span>fn print_message(message: &amp;str) {</span></span>
-<span class="giallo-l"><span>	println!(&quot;{}&quot;, &amp;message);</span></span>
+<span class="giallo-l"><span>    println!(&quot;{}&quot;, &amp;message);</span></span>
 <span class="giallo-l"><span>}</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>//...</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>#[cfg_attr(mobile, tauri::mobile_entry_point)]</span></span>
 <span class="giallo-l"><span>pub fn run() {</span></span>
-<span class="giallo-l"><span>	tauri::Builder::default()</span></span>
-<span class="giallo-l"><span>		.plugin(tauri_plugin_opener::init())</span></span>
-<span class="giallo-l"><span>		.invoke_handler(tauri::generate_handler![</span></span>
-<span class="giallo-l"><span>			greet,</span></span>
-<span class="giallo-l"><span>			print_message</span></span>
-<span class="giallo-l"><span>		])</span></span>
+<span class="giallo-l"><span>    tauri::Builder::default()</span></span>
+<span class="giallo-l"><span>        .plugin(tauri_plugin_opener::init())</span></span>
+<span class="giallo-l"><span>        .invoke_handler(tauri::generate_handler![</span></span>
+<span class="giallo-l"><span>            greet,</span></span>
+<span class="giallo-l"><span>            print_message</span></span>
+<span class="giallo-l"><span>        ])</span></span>
 <span class="giallo-l"></span></code></pre>
 <p>Note that the state variable in the .svelte file has the exact name of the argument we pass it as, which allows for the simplified syntax. Otherwise we can construct json object with the argument names as keys and values of matching types.</p>
 <p>Now we can print messages to the console via Rust, from the Svelte UI. Nice!</p>
 <p>Without any tailwind classes added we get a truly minimalist layout, so let's add some stylings.</p>
 <p>In the Layout:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;min-h-screen flex flex-col&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;Header&gt;&lt;/Header&gt;</span></span>
+<span class="giallo-l"><span>    &lt;Header&gt;&lt;/Header&gt;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	&lt;div class=&quot;grow p-4&quot;&gt;</span></span>
-<span class="giallo-l"><span>		{@render children()}</span></span>
-<span class="giallo-l"><span>	&lt;/div&gt;</span></span>
-<span class="giallo-l"><span>	</span></span>
-<span class="giallo-l"><span>	&lt;Footer&gt;&lt;/Footer&gt;</span></span>
+<span class="giallo-l"><span>    &lt;div class=&quot;grow p-4&quot;&gt;</span></span>
+<span class="giallo-l"><span>        {@render children()}</span></span>
+<span class="giallo-l"><span>    &lt;/div&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    &lt;Footer&gt;&lt;/Footer&gt;</span></span>
 <span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
 <p>This allows us to always push the footer to the bottom of the view.</p>
 <p>Header:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;flex mt-2 justify-center&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;nav&gt;</span></span>
-<span class="giallo-l"><span>		&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
-<span class="giallo-l"><span>		&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/nav&gt;</span></span>
+<span class="giallo-l"><span>    &lt;nav&gt;</span></span>
+<span class="giallo-l"><span>        &lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>        &lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/nav&gt;</span></span>
 <span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
 <p>Footer:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;flex justify-center items-center space-x-1 mt-4&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;span&gt;made by &lt;a href=&quot;https://linktr.ee/julia.hx&quot; target=&quot;_blank&quot;&gt;julia.hx&lt;/a&gt;&lt;/span&gt;</span></span>
+<span class="giallo-l"><span>    &lt;span&gt;made by &lt;a href=&quot;https://linktr.ee/julia.hx&quot; target=&quot;_blank&quot;&gt;julia.hx&lt;/a&gt;&lt;/span&gt;</span></span>
 <span class="giallo-l"><span>&lt;/div&gt;</span></span>
 <span class="giallo-l"></span></code></pre>
 <p>About page:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;flex justify-center items-center flex-col&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;span class=&quot;text-2xl font-sans&quot;&gt;About&lt;/span&gt;</span></span>
-<span class="giallo-l"><span>	&lt;p&gt;About this app.&lt;/p&gt;</span></span>
+<span class="giallo-l"><span>    &lt;span class=&quot;text-2xl font-sans&quot;&gt;About&lt;/span&gt;</span></span>
+<span class="giallo-l"><span>    &lt;p&gt;About this app.&lt;/p&gt;</span></span>
 <span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
 <p>Home page:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;flex justify-center items-center flex-col&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;span class=&quot;text-2xl font-sans&quot;&gt;Tauri Template&lt;/span&gt;</span></span>
-<span class="giallo-l"><span>	&lt;form class=&quot;flex space-x-1.5 mt-2&quot; onsubmit={printTestMessage}&gt;</span></span>
-<span class="giallo-l"><span>		&lt;input bind:value={message}/&gt;</span></span>
-<span class="giallo-l"><span>		&lt;button type=&quot;submit&quot;&gt;Print&lt;/button&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/form&gt;</span></span>
+<span class="giallo-l"><span>    &lt;span class=&quot;text-2xl font-sans&quot;&gt;Tauri Template&lt;/span&gt;</span></span>
+<span class="giallo-l"><span>    &lt;form class=&quot;flex space-x-1.5 mt-2&quot; onsubmit={printTestMessage}&gt;</span></span>
+<span class="giallo-l"><span>        &lt;input bind:value={message}/&gt;</span></span>
+<span class="giallo-l"><span>        &lt;button type=&quot;submit&quot;&gt;Print&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/form&gt;</span></span>
 <span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
 <p>With very little headache, we have an adaptive layout to work from!</p>
 <p>Color and font stylings can also be set per-element. But I do like to have a base theming going on for the whole UI, that I only need to override when wanted. Luckily Tailwind supports usage inside of regular css structures as well, using <code>theme(...)</code>!</p>
@@ -393,50 +393,50 @@ Instead of relying on a virtual DOM it outputs "compiled" html and js. I also li
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>@import &quot;tailwindcss&quot;;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>:root{</span></span>
-<span class="giallo-l"><span>	font-family: theme(--font-mono);</span></span>
-<span class="giallo-l"><span>	font-size: theme(--text-lg);</span></span>
+<span class="giallo-l"><span>    font-family: theme(--font-mono);</span></span>
+<span class="giallo-l"><span>    font-size: theme(--text-lg);</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	font-synthesis: none;</span></span>
-<span class="giallo-l"><span>	text-rendering: optimizeLegibility;</span></span>
-<span class="giallo-l"><span>	-webkit-font-smoothing: antialiased;</span></span>
-<span class="giallo-l"><span>	-moz-osx-font-smoothing: grayscale;</span></span>
-<span class="giallo-l"><span>	-webkit-text-size-adjust: 100%;</span></span>
+<span class="giallo-l"><span>    font-synthesis: none;</span></span>
+<span class="giallo-l"><span>    text-rendering: optimizeLegibility;</span></span>
+<span class="giallo-l"><span>    -webkit-font-smoothing: antialiased;</span></span>
+<span class="giallo-l"><span>    -moz-osx-font-smoothing: grayscale;</span></span>
+<span class="giallo-l"><span>    -webkit-text-size-adjust: 100%;</span></span>
 <span class="giallo-l"><span>}</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>button, input {</span></span>
-<span class="giallo-l"><span>	border-radius: 8px;</span></span>
-<span class="giallo-l"><span>	padding: 4px;</span></span>
-<span class="giallo-l"><span>	padding-left: 8px;</span></span>
-<span class="giallo-l"><span>	padding-right: 8px;</span></span>
+<span class="giallo-l"><span>    border-radius: 8px;</span></span>
+<span class="giallo-l"><span>    padding: 4px;</span></span>
+<span class="giallo-l"><span>    padding-left: 8px;</span></span>
+<span class="giallo-l"><span>    padding-right: 8px;</span></span>
 <span class="giallo-l"><span>}</span></span>
 <span class="giallo-l"><span>button {</span></span>
-<span class="giallo-l"><span>	background-color: theme(--color-violet-400);</span></span>
+<span class="giallo-l"><span>    background-color: theme(--color-violet-400);</span></span>
 <span class="giallo-l"><span>}</span></span>
 <span class="giallo-l"><span>button:hover {</span></span>
-<span class="giallo-l"><span>	background-color: theme(--color-violet-500);</span></span>
-<span class="giallo-l"><span>	cursor: pointer;</span></span>
+<span class="giallo-l"><span>    background-color: theme(--color-violet-500);</span></span>
+<span class="giallo-l"><span>    cursor: pointer;</span></span>
 <span class="giallo-l"><span>}</span></span>
 <span class="giallo-l"><span>input {</span></span>
-<span class="giallo-l"><span>	background-color: theme(--color-gray-200);</span></span>
-<span class="giallo-l"><span>	color: theme(--color-gray-800);</span></span>
+<span class="giallo-l"><span>    background-color: theme(--color-gray-200);</span></span>
+<span class="giallo-l"><span>    color: theme(--color-gray-800);</span></span>
 <span class="giallo-l"><span>}</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>a {</span></span>
-<span class="giallo-l"><span>	color: theme(--color-violet-400);</span></span>
+<span class="giallo-l"><span>    color: theme(--color-violet-400);</span></span>
 <span class="giallo-l"><span>}</span></span>
 <span class="giallo-l"><span>a:hover {</span></span>
-<span class="giallo-l"><span>	text-decoration: underline;</span></span>
+<span class="giallo-l"><span>    text-decoration: underline;</span></span>
 <span class="giallo-l"><span>}</span></span>
 <span class="giallo-l"></span></code></pre><h1 id="dark-mode"><a class="zola-anchor" href="#dark-mode" aria-label="Anchor link for: dark-mode">dark mode</a></h1>
 <p>I want to create a toggle between light/dark as part of this template.</p>
 <p>Tailwind has built in support for dark mode in the tags - we can simply add this to the layout:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;min-h-screen </span></span>
-<span class="giallo-l"><span>	flex flex-col </span></span>
-<span class="giallo-l"><span>	text-black bg-white </span></span>
-<span class="giallo-l"><span>	dark:text-gray-100 dark:bg-gray-950&quot;&gt;</span></span>
+<span class="giallo-l"><span>    flex flex-col </span></span>
+<span class="giallo-l"><span>    text-black bg-white </span></span>
+<span class="giallo-l"><span>    dark:text-gray-100 dark:bg-gray-950&quot;&gt;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	&lt;Header&gt;&lt;/Header&gt;</span></span>
-<span class="giallo-l"><span>	...</span></span></code></pre>
+<span class="giallo-l"><span>    &lt;Header&gt;&lt;/Header&gt;</span></span>
+<span class="giallo-l"><span>    ...</span></span></code></pre>
 <p>In order to toggle dark mode manually, we add the following to src/app.css:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>@import &quot;tailwindcss&quot;;</span></span>
 <span class="giallo-l"><span>@custom-variant dark (&amp;:where(.dark, .dark *));</span></span>
@@ -444,7 +444,7 @@ Instead of relying on a virtual DOM it outputs "compiled" html and js. I also li
 <span class="giallo-l"></span></code></pre>
 <p>Let's add a main element to the routes/+layout.svelte that can be used to set dark mode, and try it out manually:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;main class=&quot;dark&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;div class=&quot;min-h-screen flex...</span></span></code></pre>
+<span class="giallo-l"><span>    &lt;div class=&quot;min-h-screen flex...</span></span></code></pre>
 <p>Just like that the colors adapt to the mode. Let's add a toggle to the header so that it's up to the user what mode the UI is in.</p>
 <p>In order to access some icons, we can add a svelte adaption of <a href="https://julia-hx.github.io/posts/making-a-tauri-template/heroicons">https://heroicons.com/</a>, a set of icons from the makers of Tailwind:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>yarn add svelte-hero-icons --dev</span></span></code></pre>
@@ -454,68 +454,68 @@ Instead of relying on a virtual DOM it outputs "compiled" html and js. I also li
 <span class="giallo-l"><span>&lt;/script&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>&lt;div class=&quot;flex mt-2 justify-center&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;nav&gt;</span></span>
-<span class="giallo-l"><span>		&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
-<span class="giallo-l"><span>		&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/nav&gt;</span></span>
-<span class="giallo-l"><span>	&lt;button id=&quot;icon-toggle&quot; class=&quot;ml-2&quot;&gt;</span></span>
-<span class="giallo-l"><span>		&lt;Icon src=&quot;{Sun}&quot; id=&quot;sun&quot; size=20&gt;&lt;/Icon&gt;</span></span>
-<span class="giallo-l"><span>		&lt;Icon src=&quot;{Moon}&quot; id=&quot;moon&quot; mini size=16&gt;&lt;/Icon&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>    &lt;nav&gt;</span></span>
+<span class="giallo-l"><span>        &lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>        &lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/nav&gt;</span></span>
+<span class="giallo-l"><span>    &lt;button id=&quot;icon-toggle&quot; class=&quot;ml-2&quot;&gt;</span></span>
+<span class="giallo-l"><span>        &lt;Icon src=&quot;{Sun}&quot; id=&quot;sun&quot; size=20&gt;&lt;/Icon&gt;</span></span>
+<span class="giallo-l"><span>        &lt;Icon src=&quot;{Moon}&quot; id=&quot;moon&quot; mini size=16&gt;&lt;/Icon&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/button&gt;</span></span>
 <span class="giallo-l"><span>&lt;/div&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>&lt;style&gt;</span></span>
-<span class="giallo-l"><span>	#icon-toggle {</span></span>
-<span class="giallo-l"><span>		border-radius: 20px;</span></span>
-<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>    #icon-toggle {</span></span>
+<span class="giallo-l"><span>        border-radius: 20px;</span></span>
+<span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"><span>&lt;/style&gt;</span></span></code></pre>
 <p>We want to show one of the icons at the time, depending on current UI mode. For this we need some state, a toggle function, and an effect that reacts to the state change:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script&gt;</span></span>
-<span class="giallo-l"><span>	import { Icon, Sun, Moon } from &quot;svelte-hero-icons&quot;;</span></span>
+<span class="giallo-l"><span>    import { Icon, Sun, Moon } from &quot;svelte-hero-icons&quot;;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	let darkMode = $state(false);</span></span>
-<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
-<span class="giallo-l"><span>	let moonIcon;</span></span>
-<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
-<span class="giallo-l"><span>	let sunIcon;</span></span>
+<span class="giallo-l"><span>    let darkMode = $state(false);</span></span>
+<span class="giallo-l"><span>    /** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>    let moonIcon;</span></span>
+<span class="giallo-l"><span>    /** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>    let sunIcon;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	function toggleDarkMode() {</span></span>
-<span class="giallo-l"><span>		darkMode = !darkMode;</span></span>
-<span class="giallo-l"><span>		console.log(&quot;mode toggle&quot;);</span></span>
-<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>    function toggleDarkMode() {</span></span>
+<span class="giallo-l"><span>        darkMode = !darkMode;</span></span>
+<span class="giallo-l"><span>        console.log(&quot;mode toggle&quot;);</span></span>
+<span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	$effect(() =&gt; {</span></span>
-<span class="giallo-l"><span>		moonIcon.hidden = darkMode;</span></span>
-<span class="giallo-l"><span>		sunIcon.hidden = !darkMode;	</span></span>
-<span class="giallo-l"><span>	});</span></span>
+<span class="giallo-l"><span>    $effect(() =&gt; {</span></span>
+<span class="giallo-l"><span>        moonIcon.hidden = darkMode;</span></span>
+<span class="giallo-l"><span>        sunIcon.hidden = !darkMode;</span></span>
+<span class="giallo-l"><span>    });</span></span>
 <span class="giallo-l"><span>&lt;/script&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>&lt;div class=&quot;flex mt-2 justify-center&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;nav class=&quot;mr-2&quot;&gt;</span></span>
-<span class="giallo-l"><span>		&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
-<span class="giallo-l"><span>		&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/nav&gt;</span></span>
-<span class="giallo-l"><span>	&lt;button id=&quot;darkmode-toggle&quot; onclick={toggleDarkMode}&gt;</span></span>
-<span class="giallo-l"><span>		&lt;div id=&quot;darkmode-icon&quot;&gt;</span></span>
-<span class="giallo-l"><span>			&lt;div bind:this={sunIcon}&gt;&lt;Icon src={Sun} id=&quot;sun&quot; &gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
-<span class="giallo-l"><span>			&lt;div bind:this={moonIcon}&gt;&lt;Icon src={Moon} id=&quot;moon&quot;&gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
-<span class="giallo-l"><span>		&lt;/div&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>    &lt;nav class=&quot;mr-2&quot;&gt;</span></span>
+<span class="giallo-l"><span>        &lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>        &lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/nav&gt;</span></span>
+<span class="giallo-l"><span>    &lt;button id=&quot;darkmode-toggle&quot; onclick={toggleDarkMode}&gt;</span></span>
+<span class="giallo-l"><span>        &lt;div id=&quot;darkmode-icon&quot;&gt;</span></span>
+<span class="giallo-l"><span>            &lt;div bind:this={sunIcon}&gt;&lt;Icon src={Sun} id=&quot;sun&quot; &gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>            &lt;div bind:this={moonIcon}&gt;&lt;Icon src={Moon} id=&quot;moon&quot;&gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>        &lt;/div&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/button&gt;</span></span>
 <span class="giallo-l"><span>&lt;/div&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>&lt;style&gt;</span></span>
-<span class="giallo-l"><span>	#darkmode-toggle {</span></span>
-<span class="giallo-l"><span>		border-radius: 20px;</span></span>
-<span class="giallo-l"><span>		width: 24px;</span></span>
-<span class="giallo-l"><span>		height: 24px;</span></span>
-<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>    #darkmode-toggle {</span></span>
+<span class="giallo-l"><span>        border-radius: 20px;</span></span>
+<span class="giallo-l"><span>        width: 24px;</span></span>
+<span class="giallo-l"><span>        height: 24px;</span></span>
+<span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	#darkmode-icon {</span></span>
-<span class="giallo-l"><span>		width: 18px;</span></span>
-<span class="giallo-l"><span>		height: 18px;</span></span>
-<span class="giallo-l"><span>		margin-left: -5px;</span></span>
-<span class="giallo-l"><span>		margin-top: -1px;</span></span>
-<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>    #darkmode-icon {</span></span>
+<span class="giallo-l"><span>        width: 18px;</span></span>
+<span class="giallo-l"><span>        height: 18px;</span></span>
+<span class="giallo-l"><span>        margin-left: -5px;</span></span>
+<span class="giallo-l"><span>        margin-top: -1px;</span></span>
+<span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"><span>&lt;/style&gt;</span></span></code></pre>
 <p>Wer're able to access and hide/show the icon containers by creating variables of the correct type and binding them to the elements using <code>bind:this=""</code>.</p>
 <p>This showcases a few of the basic uses of Svelte.</p>
@@ -524,84 +524,84 @@ Let's create a ts file that can contain global state, /src/globals.svelte.ts, an
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>export const uiMode = $state({ isDarkMode: true });</span></span></code></pre>
 <p>We can import this global state instead of using a local in the Header, and we'll also update some names to be more semantically logical:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script&gt;</span></span>
-<span class="giallo-l"><span>	import { Icon, Sun, Moon } from &quot;svelte-hero-icons&quot;;</span></span>
-<span class="giallo-l"><span>	import { uiMode } from &quot;../globals.svelte.js&quot;;</span></span>
+<span class="giallo-l"><span>    import { Icon, Sun, Moon } from &quot;svelte-hero-icons&quot;;</span></span>
+<span class="giallo-l"><span>    import { uiMode } from &quot;../globals.svelte.js&quot;;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	//export const uiMode = $state({ isDarkMode : true });</span></span>
-<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
-<span class="giallo-l"><span>	let moonIcon;</span></span>
-<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
-<span class="giallo-l"><span>	let sunIcon;</span></span>
+<span class="giallo-l"><span>    //export const uiMode = $state({ isDarkMode : true });</span></span>
+<span class="giallo-l"><span>    /** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>    let moonIcon;</span></span>
+<span class="giallo-l"><span>    /** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>    let sunIcon;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	function toggleDarkMode() {</span></span>
-<span class="giallo-l"><span>		uiMode.isDarkMode = !uiMode.isDarkMode;</span></span>
-<span class="giallo-l"><span>		console.log(&quot;mode toggle&quot;);</span></span>
-<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>    function toggleDarkMode() {</span></span>
+<span class="giallo-l"><span>        uiMode.isDarkMode = !uiMode.isDarkMode;</span></span>
+<span class="giallo-l"><span>        console.log(&quot;mode toggle&quot;);</span></span>
+<span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	$effect(() =&gt; {</span></span>
-<span class="giallo-l"><span>		moonIcon.hidden = uiMode.isDarkMode;</span></span>
-<span class="giallo-l"><span>		sunIcon.hidden = !uiMode.isDarkMode;	</span></span>
-<span class="giallo-l"><span>	});</span></span>
+<span class="giallo-l"><span>    $effect(() =&gt; {</span></span>
+<span class="giallo-l"><span>        moonIcon.hidden = uiMode.isDarkMode;</span></span>
+<span class="giallo-l"><span>        sunIcon.hidden = !uiMode.isDarkMode;</span></span>
+<span class="giallo-l"><span>    });</span></span>
 <span class="giallo-l"><span>&lt;/script&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>&lt;div class=&quot;flex mt-2 justify-center&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;nav class=&quot;mr-2&quot;&gt;</span></span>
-<span class="giallo-l"><span>		&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
-<span class="giallo-l"><span>		&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/nav&gt;</span></span>
-<span class="giallo-l"><span>	&lt;button id=&quot;uimode-toggle&quot; onclick={toggleDarkMode}&gt;</span></span>
-<span class="giallo-l"><span>		&lt;div id=&quot;uimode-icon&quot;&gt;</span></span>
-<span class="giallo-l"><span>			&lt;div bind:this={sunIcon}&gt;&lt;Icon src={Sun} id=&quot;sun&quot; &gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
-<span class="giallo-l"><span>			&lt;div bind:this={moonIcon}&gt;&lt;Icon src={Moon} id=&quot;moon&quot;&gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
-<span class="giallo-l"><span>		&lt;/div&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>    &lt;nav class=&quot;mr-2&quot;&gt;</span></span>
+<span class="giallo-l"><span>        &lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>        &lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/nav&gt;</span></span>
+<span class="giallo-l"><span>    &lt;button id=&quot;uimode-toggle&quot; onclick={toggleDarkMode}&gt;</span></span>
+<span class="giallo-l"><span>        &lt;div id=&quot;uimode-icon&quot;&gt;</span></span>
+<span class="giallo-l"><span>            &lt;div bind:this={sunIcon}&gt;&lt;Icon src={Sun} id=&quot;sun&quot; &gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>            &lt;div bind:this={moonIcon}&gt;&lt;Icon src={Moon} id=&quot;moon&quot;&gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>        &lt;/div&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/button&gt;</span></span>
 <span class="giallo-l"><span>&lt;/div&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>&lt;style&gt;</span></span>
-<span class="giallo-l"><span>	#uimode-toggle {</span></span>
-<span class="giallo-l"><span>		border-radius: 20px;</span></span>
-<span class="giallo-l"><span>		width: 24px;</span></span>
-<span class="giallo-l"><span>		height: 24px;</span></span>
-<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>    #uimode-toggle {</span></span>
+<span class="giallo-l"><span>        border-radius: 20px;</span></span>
+<span class="giallo-l"><span>        width: 24px;</span></span>
+<span class="giallo-l"><span>        height: 24px;</span></span>
+<span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	#uimode-icon {</span></span>
-<span class="giallo-l"><span>		width: 18px;</span></span>
-<span class="giallo-l"><span>		height: 18px;</span></span>
-<span class="giallo-l"><span>		margin-left: -5px;</span></span>
-<span class="giallo-l"><span>		margin-top: -1px;</span></span>
-<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>    #uimode-icon {</span></span>
+<span class="giallo-l"><span>        width: 18px;</span></span>
+<span class="giallo-l"><span>        height: 18px;</span></span>
+<span class="giallo-l"><span>        margin-left: -5px;</span></span>
+<span class="giallo-l"><span>        margin-top: -1px;</span></span>
+<span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"><span>&lt;/style&gt;</span></span></code></pre>
 <p>Note that the import statement exchanges .ts with .js - this is maybe not the cleanest way to do things but it avoids errors. Ts is just js with extra steps, after all.</p>
 <p>We can now also import the global uiMode into our layout:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script&gt;</span></span>
-<span class="giallo-l"><span>	let { children } = $props();</span></span>
-<span class="giallo-l"><span>	import Header from &quot;../components/Header.svelte&quot;;</span></span>
-<span class="giallo-l"><span>	import { uiMode } from &quot;../globals.svelte.js&quot;;</span></span>
-<span class="giallo-l"><span>	import Footer from &quot;../components/Footer.svelte&quot;;</span></span>
-<span class="giallo-l"><span>	import &quot;../app.css&quot;</span></span>
+<span class="giallo-l"><span>    let { children } = $props();</span></span>
+<span class="giallo-l"><span>    import Header from &quot;../components/Header.svelte&quot;;</span></span>
+<span class="giallo-l"><span>    import { uiMode } from &quot;../globals.svelte.js&quot;;</span></span>
+<span class="giallo-l"><span>    import Footer from &quot;../components/Footer.svelte&quot;;</span></span>
+<span class="giallo-l"><span>    import &quot;../app.css&quot;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
-<span class="giallo-l"><span>	let main;</span></span>
+<span class="giallo-l"><span>    /** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>    let main;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>	$effect(() =&gt; {	</span></span>
-<span class="giallo-l"><span>		if(uiMode.isDarkMode) {</span></span>
-<span class="giallo-l"><span>			main.className = &quot;dark&quot;;</span></span>
-<span class="giallo-l"><span>		} else {</span></span>
-<span class="giallo-l"><span>			main.className = &quot;&quot;;</span></span>
-<span class="giallo-l"><span>		}</span></span>
-<span class="giallo-l"><span>	});</span></span>
+<span class="giallo-l"><span>    $effect(() =&gt; { </span></span>
+<span class="giallo-l"><span>        if(uiMode.isDarkMode) {</span></span>
+<span class="giallo-l"><span>            main.className = &quot;dark&quot;;</span></span>
+<span class="giallo-l"><span>        } else {</span></span>
+<span class="giallo-l"><span>            main.className = &quot;&quot;;</span></span>
+<span class="giallo-l"><span>        }</span></span>
+<span class="giallo-l"><span>    });</span></span>
 <span class="giallo-l"><span>&lt;/script&gt;</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>&lt;main class=&quot;&quot; bind:this=&quot;{main}&quot;&gt;</span></span>
-<span class="giallo-l"><span>	&lt;div class=&quot;min-h-screen flex flex-col text-black bg-white dark:text-gray-100 dark:bg-gray-950&quot;&gt;</span></span>
-<span class="giallo-l"><span>		&lt;Header&gt;&lt;/Header&gt;</span></span>
+<span class="giallo-l"><span>    &lt;div class=&quot;min-h-screen flex flex-col text-black bg-white dark:text-gray-100 dark:bg-gray-950&quot;&gt;</span></span>
+<span class="giallo-l"><span>        &lt;Header&gt;&lt;/Header&gt;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>		&lt;div class=&quot;grow p-4&quot;&gt;</span></span>
-<span class="giallo-l"><span>			{@render children()}</span></span>
-<span class="giallo-l"><span>		&lt;/div&gt;</span></span>
-<span class="giallo-l"><span>		</span></span>
-<span class="giallo-l"><span>		&lt;Footer&gt;&lt;/Footer&gt;</span></span>
-<span class="giallo-l"><span>	&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>        &lt;div class=&quot;grow p-4&quot;&gt;</span></span>
+<span class="giallo-l"><span>            {@render children()}</span></span>
+<span class="giallo-l"><span>        &lt;/div&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>        &lt;Footer&gt;&lt;/Footer&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/div&gt;</span></span>
 <span class="giallo-l"><span>&lt;/main&gt;</span></span></code></pre>
 <p>We bound "main" to a variable similarly to what we did in the header. Now we just needed an effect that responds to the global uiMode and sets the right class on our main element!</p>
 <h1 id="wrapping-up"><a class="zola-anchor" href="#wrapping-up" aria-label="Anchor link for: wrapping-up">wrapping up</a></h1>
