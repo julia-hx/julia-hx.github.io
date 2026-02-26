@@ -409,7 +409,26 @@ Let&#x27;s create a ts file that can contain global state, &#x2F;src&#x2F;global
 &lt;p&gt;This process has not been without any snags at all, but close to it. Most research was quick, and the biggest problem so far are som faulty compile error popups when running &lt;code&gt;yarn tauri dev&lt;&#x2F;code&gt; that don&#x27;t affect the build. Annoying, and would be nice to get rid of, but hey.&lt;&#x2F;p&gt;
 &lt;p&gt;Otherwise, this felt like a very streamlined way to get an app template up and running that uses a Rust backend and a web frontend, with a nice Dark Mode toggle built in!&lt;&#x2F;p&gt;
 &lt;p&gt;You can visit the template repo &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;julia-hx&#x2F;tauri-template&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-</content>
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Versions used in this template:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;quot;dependencies&amp;quot;: {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;@tailwindcss&#x2F;vite&amp;quot;: &amp;quot;^4.2.1&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;@tauri-apps&#x2F;api&amp;quot;: &amp;quot;^2&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;@tauri-apps&#x2F;plugin-opener&amp;quot;: &amp;quot;^2&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;tailwindcss&amp;quot;: &amp;quot;^4.2.1&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  },&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  &amp;quot;devDependencies&amp;quot;: {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;@sveltejs&#x2F;adapter-static&amp;quot;: &amp;quot;^3.0.6&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;@sveltejs&#x2F;kit&amp;quot;: &amp;quot;^2.9.0&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;@sveltejs&#x2F;vite-plugin-svelte&amp;quot;: &amp;quot;^5.0.0&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;@tauri-apps&#x2F;cli&amp;quot;: &amp;quot;^2&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;svelte&amp;quot;: &amp;quot;^5.0.0&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;svelte-check&amp;quot;: &amp;quot;^4.0.0&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;svelte-hero-icons&amp;quot;: &amp;quot;^5.2.0&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;typescript&amp;quot;: &amp;quot;~5.6.2&amp;quot;,&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &amp;quot;vite&amp;quot;: &amp;quot;^6.0.3&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  ...&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
         
     </entry>
     <entry xml:lang="en">
