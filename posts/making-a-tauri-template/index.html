@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en" class="dark light">
+
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https:&#x2F;&#x2F;julia-hx.github.io&#x2F;">
+
+    
+
+    
+    
+    
+        <title>
+            
+                making a tauri template
+            
+        </title>
+
+        
+            <meta property="og:title"
+                  content="making a tauri template" />
+        
+    
+
+    
+        
+            <meta property="og:description" content="made with 💜 by julia.hx" />
+        
+    
+
+    
+        
+            <meta name="description" content="made with 💜 by julia.hx" />
+        
+    
+
+    
+    
+
+    
+    
+        <link href=https://julia-hx.github.io/fonts.css rel="stylesheet" />
+    
+
+    
+    
+
+    
+    
+
+    
+    <script defer src=https://julia-hx.github.io/js/codeblock.js></script>
+
+    
+    
+
+    
+    
+
+    
+
+    
+    
+        
+            
+            <link rel="alternate"
+                  type="application/atom+xml"
+                  title="julia.hx"
+                  href="https://julia-hx.github.io/atom.xml" />
+            
+        
+    
+
+
+    
+    
+        <link rel="stylesheet"
+              type="text/css"
+              href="https://julia-hx.github.io/theme/light.css" />
+        <link id="darkModeStyle"
+              rel="stylesheet"
+              type="text/css"
+              href="https://julia-hx.github.io/theme/dark.css" />
+    
+
+    <!-- Set the correct theme in the script -->
+
+    
+        <script src=https://julia-hx.github.io/js/themetoggle.js></script>
+
+        
+            <script>setTheme(getSavedTheme());</script>
+        
+    
+
+
+    <link rel="stylesheet"
+          type="text/css"
+          media="screen"
+          href="https://julia-hx.github.io/main.css" />
+
+    
+
+    </head>
+
+
+    <body>
+        <div class="left-content">
+            
+            
+        </div>
+
+        <div class="content">
+            <nav>
+    <div class="left-nav">
+        
+            <a href=https:&#x2F;&#x2F;julia-hx.github.io&#x2F;>julia.hx</a>
+        
+
+
+        <div class="socials">
+            
+                <a rel="me" href="https:&#x2F;&#x2F;github.com&#x2F;julia-hx&#x2F;" class="social">
+                    <img alt="github" src="https://julia-hx.github.io/icons/social/github.svg">
+                </a>
+            
+                <a rel="me" href="https:&#x2F;&#x2F;linktr.ee&#x2F;julia.hx" class="social">
+                    <img alt="linktree" src="https://julia-hx.github.io/icons/social/linktree.svg">
+                </a>
+            
+        </div>
+    </div>
+
+    <div class="right-nav">
+        
+            <a href=https://julia-hx.github.io/posts style="margin-right: 0.5em">&#x2F;posts</a>
+        
+            <a href=https://julia-hx.github.io/projects style="margin-right: 0.5em">&#x2F;projects</a>
+        
+            <a href=https://julia-hx.github.io/tags style="margin-right: 0.5em">&#x2F;tags</a>
+        
+
+        
+
+        
+            <a id="dark-mode-toggle"
+            onclick="toggleTheme(); event.preventDefault();"
+            href="#">
+                <img src="https://julia-hx.github.io/icons/sun.svg"
+                    id="sun-icon"
+                    style="filter: invert(1)"
+                    alt="Light" />
+                <img src=https://julia-hx.github.io/icons/moon.svg id="moon-icon" alt="Dark" />
+            </a>
+
+            <!-- Initialize the theme toggle icons -->
+            <script>updateItemToggleTheme()</script>
+        
+    </div>
+</nav>
+
+
+            
+            
+    
+<div class="visible-element-observer-root" data-selector="main article p">
+    <main>
+        <article>
+            <div class="title">
+                
+                
+    
+    <div class="page-header">
+        making a tauri template
+    </div>
+    
+
+
+                <div class="meta">
+                    
+                        Posted on <time>2026-02-26</time>
+                    
+
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+
+                    
+                    
+
+                    
+                    
+                        <span class="tags-label"> :: </span>
+                        <span class="tags">
+                                <a href="https://julia-hx.github.io/tags/rust/"
+                                   class="post-tag">rust</a>
+                            
+                                <a href="https://julia-hx.github.io/tags/code/"
+                                   class="post-tag">code</a>
+                            
+                                <a href="https://julia-hx.github.io/tags/web/"
+                                   class="post-tag">web</a>
+                            
+                        </span>
+                    
+
+                    
+
+                </div>
+            </div>
+
+            
+
+            <section class="body">
+                <p>Wanting to learn more Rust, making little tools in it is a good way to both learn the language and make something useful (possibly).</p>
+<p>One general question I've been wanting to solve is how to draw the UI.</p>
+<p>I tried out some of the most lightweight solutions first, such as <a rel="external" href="https://github.com/emilk/egui">egui</a>. It's basically a Rust version of <a rel="external" href="https://github.com/ocornut/imgui">imgui</a>, which I've used a bunch when drawing debug interfaces in Unreal Engine. Immediate mode, everything is written out in code, and you can do fancy layouts if you really really try. I did like it - easily set up via cargo, does what it says.</p>
+<p>But whenever you want to draw text and images and forms and buttons to a screen, a very effective and convenient way of doing so is lurking just around the corner: declarative html and css, and javascript for wiggly things. There's a reason so many apps are made in Electron - so many tools and practices are available to make a responsive and clean UI with web technology.</p>
+<p>On the other hand I'm not alone in having a deep aversion to node.js and npm. It's bloated, the dependency tree is pure insanity, and it's so often used for stuff it's not good at. But with the right integration (not Electron) it's very tempting to use the language of the browser as a UI layer to a codebase in something like Rust or C++.</p>
+<p>This particular approach of combining Rust and HTML I stumbled upon. I probably listen to an unhealthy amount of podcasts, among them several of the <a rel="external" href="https://latenightlinux.com/">Late Night Linux</a> family. They happened to mention some alternatives to Electron, and <a rel="external" href="https://tauri.app/">Tauri</a> jumped out to me since it uses a Rust backend and got good reviews on the podcast. Trying it out it quickly clicked for me.</p>
+<p>So here I'll document the steps I needed to take in order to reach a starting point I like.</p>
+<h1 id="tauri-setup"><a class="zola-anchor" href="#tauri-setup" aria-label="Anchor link for: tauri-setup">tauri setup</a></h1>
+<p>I had to bite the bullet and install node. I decided to install yarn for package managing since I've used it before and liked it slightly better than npm.
+Once that is in place:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>yarn create tauri app</span></span></code></pre>
+<p>to create the project. The setup cli lets you set the project name ("tauri-template" in my case), pick package management, frontend language and framework, and tells you the next steps to run your project:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>cd tauri-template // your project name here</span></span>
+<span class="giallo-l"><span>yarn</span></span>
+<span class="giallo-l"><span>yarn tauri dev</span></span></code></pre>
+<p>and you've run the first build.</p>
+<p>Edit /src/routes/+layout.js:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>export const prerender = true;</span></span>
+<span class="giallo-l"><span>export const ssr = false;</span></span></code></pre>
+<p>in order for things to work as expected later on.</p>
+<p>It is worth mentioning here that <a rel="external" href="https://vite.dev/">Vite</a> is a part of the Tauri template as a build tool. We're not going to interact with it much though.</p>
+<p>For this template I chose <a rel="external" href="https://svelte.dev/">Svelte</a> as a frontend framework.</p>
+<h1 id="svelte"><a class="zola-anchor" href="#svelte" aria-label="Anchor link for: svelte">svelte</a></h1>
+<p>Svelte leans a bit more into a static-site-generation paradigm than similar frameworks such as React or Vue.
+Instead of relying on a virtual DOM it outputs "compiled" html and js. I also like the routing setup - it is represented by the actual folder structure under /src/routes. For this simple template we just need two pages: "home", which is always at /src/routes/+page.svelte, and "about". The second page is added by creating /src/routes/about/+page.svelte. It can contain a placeholder for now:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;p&gt;About this app&lt;/p&gt;</span></span></code></pre>
+<p>In order to create a shared base layout for both of these pages, so I don't need to reproduce shared elements in multiple places, I create /src/+layout.svelte next to /src/+page.svelte.</p>
+<p>Multiple layouts can be added to a svelte routes tree, and are applied to all children pages until another layout is found, which is then applied to all following children pages, and so on. For this template a single layout will suffice - let's start with some boilerplate that will render all child pages without adding anything to them at the moment:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script lang=&quot;ts&quot;&gt;</span></span>
+<span class="giallo-l"><span>	let { children } = $props();</span></span>
+<span class="giallo-l"><span>&lt;/script&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{@render children()}</span></span></code></pre>
+<p>If we run <code>yarn tauri dev</code> the home page is rendered as before. Add some text above or under <code>{@render children}</code> in the layout and it will appear on the home page as well.</p>
+<p>Let's flesh out the layout with a header and a footer. These are good candidates for components. We'll add a folder with two files:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>src/</span></span>
+<span class="giallo-l"><span>--components/</span></span>
+<span class="giallo-l"><span>----Footer.svelte</span></span>
+<span class="giallo-l"><span>----Header.svelte</span></span>
+<span class="giallo-l"><span>--routes/</span></span></code></pre>
+<p>In the Header, we'll add some basic navigation:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;nav&gt;</span></span>
+<span class="giallo-l"><span>	&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>	&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>&lt;/nav&gt;</span></span></code></pre>
+<p>It's this simple to link to pages in the routes folder.</p>
+<p>For now, the Footer will just contain this:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;span&gt;made by julia&lt;/span&gt;</span></span></code></pre>
+<p>Now to include these two components in the main layout, we need to edit src/+layout.svelte:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script lang=&quot;ts&quot;&gt;</span></span>
+<span class="giallo-l"><span>	let { children } = $props();</span></span>
+<span class="giallo-l"><span>	import Header from &quot;../components/Header.svelte&quot;;</span></span>
+<span class="giallo-l"><span>	import Footer from &quot;../components/Footer.svelte&quot;;</span></span>
+<span class="giallo-l"><span>&lt;/script&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;Header&gt;&lt;/Header&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{@render children()}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;Footer&gt;&lt;/Footer&gt;</span></span></code></pre>
+<p>Running <code>yarn tauri dev</code> again we can see the components in the layout, and navigate between "home" and "about".</p>
+<p>This is all the basic structure we need for a template! But it doesn't look like much yet. Each .svelte file can contain css as well as html and js. Svelte as a framework really wants you to lean into per-component stylings, but also supports inheritance of styles, so you can define everything yourself or use any css framework or files you want.</p>
+<p>Since I was already facing my fear of frameworks and adding all the modern things (Tauri, Svelte and Vite), I did a little bit of research about the current state of css (when I learned webdev Bootstrap was still fresh!), and a lot of people are using <a rel="external" href="https://tailwindcss.com/">Tailwind</a>.</p>
+<p>Again - tried it out quickly, kind of liked it, so I'll integrate it into my template instead of rolling a bunch of my own css.</p>
+<h1 id="tailwind"><a class="zola-anchor" href="#tailwind" aria-label="Anchor link for: tailwind">tailwind</a></h1>
+<p>Tailwind is also new to me, but I can see the appeal.</p>
+<p>Instead of creating a separate but analogous css structure alongside the project itself, Tailwind leans into using a toolbox of pre-made classes to set css styles in-place. This seems to be a good match with Svelte's approach of styling per-component - more wysiwyg and less inheritance.</p>
+<p>It also boasts a dynamic css compilation that is supposed to result in a smaller css build footprint. Supposing that works as advertised this also plays well into the Tauri/Svelte way of doing things.</p>
+<p>Integrating Tailwind into this template is straight-forward enough. First add the package via yarn:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>yarn add tailwindcss @tailwindcss/vite</span></span></code></pre>
+<p>Then we add Tailwind to the Vite configuration:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>import { defineConfig } from &quot;vite&quot;;</span></span>
+<span class="giallo-l"><span>import { sveltekit } from &quot;@sveltejs/kit/vite&quot;;</span></span>
+<span class="giallo-l"><span>import tailwindcss from &quot;@tailwindcss/vite&quot;;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>//...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>export default defineConfig(async () =&gt; ({</span></span>
+<span class="giallo-l"><span>	plugins: [</span></span>
+<span class="giallo-l"><span>		sveltekit(),</span></span>
+<span class="giallo-l"><span>		tailwindcss(),</span></span>
+<span class="giallo-l"><span>	],</span></span></code></pre>
+<p>Create /src/app.css next to /src/app.html and add this import:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>@import &quot;tailwindcss&quot;;</span></span></code></pre>
+<p>Lastly, we need to import the new css file into our layout in src/routes/+layout.svelte:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script lang=&quot;ts&quot;&gt;</span></span>
+<span class="giallo-l"><span>	let { children } = $props();</span></span>
+<span class="giallo-l"><span>	import Header from &quot;../components/Header.svelte&quot;;</span></span>
+<span class="giallo-l"><span>	import Footer from &quot;../components/Footer.svelte&quot;;</span></span>
+<span class="giallo-l"><span>	import &quot;.../app.css&quot;</span></span>
+<span class="giallo-l"><span>&lt;/script&gt;</span></span></code></pre>
+<p>Now we can start using the Tailwind classes!</p>
+<h1 id="home-page"><a class="zola-anchor" href="#home-page" aria-label="Anchor link for: home-page">home page</a></h1>
+<p>Let's move the default home page to a different file for reference (or just delete it), and create a much more bare-bones one:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script&gt;</span></span>
+<span class="giallo-l"><span>	import { invoke } from &quot;@tauri-apps/api/core&quot;;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	let message = $state(&quot;Hello world!&quot;);</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	async function printTestMessage() {</span></span>
+<span class="giallo-l"><span>		await invoke(&quot;print_message&quot;, { message });</span></span>
+<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>&lt;/script&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;div&gt;</span></span>
+<span class="giallo-l"><span>	&lt;span&gt;Tauri Template&lt;/span&gt;</span></span>
+<span class="giallo-l"><span>	&lt;form onsubmit={printTestMessage}&gt;</span></span>
+<span class="giallo-l"><span>		&lt;input bind:value={message}/&gt;</span></span>
+<span class="giallo-l"><span>		&lt;button type=&quot;submit&quot;&gt;Print&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/form&gt;</span></span>
+<span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
+<p>We need to add the invoked function to Rust. We do this by modifying /src-tauri/src/lib.rs:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>#[tauri::command]</span></span>
+<span class="giallo-l"><span>fn print_message(message: &amp;str) {</span></span>
+<span class="giallo-l"><span>	println!(&quot;{}&quot;, &amp;message);</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>//...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>#[cfg_attr(mobile, tauri::mobile_entry_point)]</span></span>
+<span class="giallo-l"><span>pub fn run() {</span></span>
+<span class="giallo-l"><span>	tauri::Builder::default()</span></span>
+<span class="giallo-l"><span>		.plugin(tauri_plugin_opener::init())</span></span>
+<span class="giallo-l"><span>		.invoke_handler(tauri::generate_handler![</span></span>
+<span class="giallo-l"><span>			greet,</span></span>
+<span class="giallo-l"><span>			print_message</span></span>
+<span class="giallo-l"><span>		])</span></span>
+<span class="giallo-l"></span></code></pre>
+<p>Note that the state variable in the .svelte file has the exact name of the argument we pass it as, which allows for the simplified syntax. Otherwise we can construct json object with the argument names as keys and values of matching types.</p>
+<p>Now we can print messages to the console via Rust, from the Svelte UI. Nice!</p>
+<p>Without any tailwind classes added we get a truly minimalist layout, so let's add some stylings.</p>
+<p>In the Layout:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;min-h-screen flex flex-col&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;Header&gt;&lt;/Header&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	&lt;div class=&quot;grow p-4&quot;&gt;</span></span>
+<span class="giallo-l"><span>		{@render children()}</span></span>
+<span class="giallo-l"><span>	&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>	</span></span>
+<span class="giallo-l"><span>	&lt;Footer&gt;&lt;/Footer&gt;</span></span>
+<span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
+<p>This allows us to always push the footer to the bottom of the view.</p>
+<p>Header:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;flex mt-2 justify-center&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;nav&gt;</span></span>
+<span class="giallo-l"><span>		&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>		&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/nav&gt;</span></span>
+<span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
+<p>Footer:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;flex justify-center items-center space-x-1 mt-4&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;span&gt;made by &lt;a href=&quot;https://linktr.ee/julia.hx&quot; target=&quot;_blank&quot;&gt;julia.hx&lt;/a&gt;&lt;/span&gt;</span></span>
+<span class="giallo-l"><span>&lt;/div&gt;</span></span>
+<span class="giallo-l"></span></code></pre>
+<p>About page:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;flex justify-center items-center flex-col&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;span class=&quot;text-2xl font-sans&quot;&gt;About&lt;/span&gt;</span></span>
+<span class="giallo-l"><span>	&lt;p&gt;About this app.&lt;/p&gt;</span></span>
+<span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
+<p>Home page:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;flex justify-center items-center flex-col&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;span class=&quot;text-2xl font-sans&quot;&gt;Tauri Template&lt;/span&gt;</span></span>
+<span class="giallo-l"><span>	&lt;form class=&quot;flex space-x-1.5 mt-2&quot; onsubmit={printTestMessage}&gt;</span></span>
+<span class="giallo-l"><span>		&lt;input bind:value={message}/&gt;</span></span>
+<span class="giallo-l"><span>		&lt;button type=&quot;submit&quot;&gt;Print&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/form&gt;</span></span>
+<span class="giallo-l"><span>&lt;/div&gt;</span></span></code></pre>
+<p>With very little headache, we have an adaptive layout to work from!</p>
+<p>Color and font stylings can also be set per-element. But I do like to have a base theming going on for the whole UI, that I only need to override when wanted. Luckily Tailwind supports usage inside of regular css structures as well, using <code>theme(...)</code>!</p>
+<p>In /src/app.css:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>@import &quot;tailwindcss&quot;;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>:root{</span></span>
+<span class="giallo-l"><span>	font-family: theme(--font-mono);</span></span>
+<span class="giallo-l"><span>	font-size: theme(--text-lg);</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	font-synthesis: none;</span></span>
+<span class="giallo-l"><span>	text-rendering: optimizeLegibility;</span></span>
+<span class="giallo-l"><span>	-webkit-font-smoothing: antialiased;</span></span>
+<span class="giallo-l"><span>	-moz-osx-font-smoothing: grayscale;</span></span>
+<span class="giallo-l"><span>	-webkit-text-size-adjust: 100%;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>button, input {</span></span>
+<span class="giallo-l"><span>	border-radius: 8px;</span></span>
+<span class="giallo-l"><span>	padding: 4px;</span></span>
+<span class="giallo-l"><span>	padding-left: 8px;</span></span>
+<span class="giallo-l"><span>	padding-right: 8px;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"><span>button {</span></span>
+<span class="giallo-l"><span>	background-color: theme(--color-violet-400);</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"><span>button:hover {</span></span>
+<span class="giallo-l"><span>	background-color: theme(--color-violet-500);</span></span>
+<span class="giallo-l"><span>	cursor: pointer;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"><span>input {</span></span>
+<span class="giallo-l"><span>	background-color: theme(--color-gray-200);</span></span>
+<span class="giallo-l"><span>	color: theme(--color-gray-800);</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>a {</span></span>
+<span class="giallo-l"><span>	color: theme(--color-violet-400);</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"><span>a:hover {</span></span>
+<span class="giallo-l"><span>	text-decoration: underline;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span></code></pre><h1 id="dark-mode"><a class="zola-anchor" href="#dark-mode" aria-label="Anchor link for: dark-mode">dark mode</a></h1>
+<p>I want to create a toggle between light/dark as part of this template.</p>
+<p>Tailwind has built in support for dark mode in the tags - we can simply add this to the layout:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;div class=&quot;min-h-screen </span></span>
+<span class="giallo-l"><span>	flex flex-col </span></span>
+<span class="giallo-l"><span>	text-black bg-white </span></span>
+<span class="giallo-l"><span>	dark:text-gray-100 dark:bg-gray-950&quot;&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	&lt;Header&gt;&lt;/Header&gt;</span></span>
+<span class="giallo-l"><span>	...</span></span></code></pre>
+<p>In order to toggle dark mode manually, we add the following to src/app.css:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>@import &quot;tailwindcss&quot;;</span></span>
+<span class="giallo-l"><span>@custom-variant dark (&amp;:where(.dark, .dark *));</span></span>
+<span class="giallo-l"><span>...</span></span>
+<span class="giallo-l"></span></code></pre>
+<p>Let's add a main element to the routes/+layout.svelte that can be used to set dark mode, and try it out manually:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;main class=&quot;dark&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;div class=&quot;min-h-screen flex...</span></span></code></pre>
+<p>Just like that the colors adapt to the mode. Let's add a toggle to the header so that it's up to the user what mode the UI is in.</p>
+<p>In order to access some icons, we can add a svelte adaption of <a href="https://julia-hx.github.io/posts/making-a-tauri-template/heroicons">https://heroicons.com/</a>, a set of icons from the makers of Tailwind:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>yarn add svelte-hero-icons --dev</span></span></code></pre>
+<p>Let's add a button that contains both Sun and Moon icons to the Header:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script&gt;</span></span>
+<span class="giallo-l"><span>  import { Icon, Sun, Moon } from &quot;svelte-hero-icons&quot;;</span></span>
+<span class="giallo-l"><span>&lt;/script&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;div class=&quot;flex mt-2 justify-center&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;nav&gt;</span></span>
+<span class="giallo-l"><span>		&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>		&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/nav&gt;</span></span>
+<span class="giallo-l"><span>	&lt;button id=&quot;icon-toggle&quot; class=&quot;ml-2&quot;&gt;</span></span>
+<span class="giallo-l"><span>		&lt;Icon src=&quot;{Sun}&quot; id=&quot;sun&quot; size=20&gt;&lt;/Icon&gt;</span></span>
+<span class="giallo-l"><span>		&lt;Icon src=&quot;{Moon}&quot; id=&quot;moon&quot; mini size=16&gt;&lt;/Icon&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>&lt;/div&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;style&gt;</span></span>
+<span class="giallo-l"><span>	#icon-toggle {</span></span>
+<span class="giallo-l"><span>		border-radius: 20px;</span></span>
+<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>&lt;/style&gt;</span></span></code></pre>
+<p>We want to show one of the icons at the time, depending on current UI mode. For this we need some state, a toggle function, and an effect that reacts to the state change:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script&gt;</span></span>
+<span class="giallo-l"><span>	import { Icon, Sun, Moon } from &quot;svelte-hero-icons&quot;;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	let darkMode = $state(false);</span></span>
+<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>	let moonIcon;</span></span>
+<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>	let sunIcon;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	function toggleDarkMode() {</span></span>
+<span class="giallo-l"><span>		darkMode = !darkMode;</span></span>
+<span class="giallo-l"><span>		console.log(&quot;mode toggle&quot;);</span></span>
+<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	$effect(() =&gt; {</span></span>
+<span class="giallo-l"><span>		moonIcon.hidden = darkMode;</span></span>
+<span class="giallo-l"><span>		sunIcon.hidden = !darkMode;	</span></span>
+<span class="giallo-l"><span>	});</span></span>
+<span class="giallo-l"><span>&lt;/script&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;div class=&quot;flex mt-2 justify-center&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;nav class=&quot;mr-2&quot;&gt;</span></span>
+<span class="giallo-l"><span>		&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>		&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/nav&gt;</span></span>
+<span class="giallo-l"><span>	&lt;button id=&quot;darkmode-toggle&quot; onclick={toggleDarkMode}&gt;</span></span>
+<span class="giallo-l"><span>		&lt;div id=&quot;darkmode-icon&quot;&gt;</span></span>
+<span class="giallo-l"><span>			&lt;div bind:this={sunIcon}&gt;&lt;Icon src={Sun} id=&quot;sun&quot; &gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>			&lt;div bind:this={moonIcon}&gt;&lt;Icon src={Moon} id=&quot;moon&quot;&gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>		&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>&lt;/div&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;style&gt;</span></span>
+<span class="giallo-l"><span>	#darkmode-toggle {</span></span>
+<span class="giallo-l"><span>		border-radius: 20px;</span></span>
+<span class="giallo-l"><span>		width: 24px;</span></span>
+<span class="giallo-l"><span>		height: 24px;</span></span>
+<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	#darkmode-icon {</span></span>
+<span class="giallo-l"><span>		width: 18px;</span></span>
+<span class="giallo-l"><span>		height: 18px;</span></span>
+<span class="giallo-l"><span>		margin-left: -5px;</span></span>
+<span class="giallo-l"><span>		margin-top: -1px;</span></span>
+<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>&lt;/style&gt;</span></span></code></pre>
+<p>Wer're able to access and hide/show the icon containers by creating variables of the correct type and binding them to the elements using <code>bind:this=""</code>.</p>
+<p>This showcases a few of the basic uses of Svelte.</p>
+<p>Of course we want to change the actual ui mode along with the icons.
+Let's create a ts file that can contain global state, /src/globals.svelte.ts, and add a uiMode. We need to define explicit json for the export to work, instead of the shorthand we used for the local state:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>export const uiMode = $state({ isDarkMode: true });</span></span></code></pre>
+<p>We can import this global state instead of using a local in the Header, and we'll also update some names to be more semantically logical:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script&gt;</span></span>
+<span class="giallo-l"><span>	import { Icon, Sun, Moon } from &quot;svelte-hero-icons&quot;;</span></span>
+<span class="giallo-l"><span>	import { uiMode } from &quot;../globals.svelte.js&quot;;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	//export const uiMode = $state({ isDarkMode : true });</span></span>
+<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>	let moonIcon;</span></span>
+<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>	let sunIcon;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	function toggleDarkMode() {</span></span>
+<span class="giallo-l"><span>		uiMode.isDarkMode = !uiMode.isDarkMode;</span></span>
+<span class="giallo-l"><span>		console.log(&quot;mode toggle&quot;);</span></span>
+<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	$effect(() =&gt; {</span></span>
+<span class="giallo-l"><span>		moonIcon.hidden = uiMode.isDarkMode;</span></span>
+<span class="giallo-l"><span>		sunIcon.hidden = !uiMode.isDarkMode;	</span></span>
+<span class="giallo-l"><span>	});</span></span>
+<span class="giallo-l"><span>&lt;/script&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;div class=&quot;flex mt-2 justify-center&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;nav class=&quot;mr-2&quot;&gt;</span></span>
+<span class="giallo-l"><span>		&lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>		&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/nav&gt;</span></span>
+<span class="giallo-l"><span>	&lt;button id=&quot;uimode-toggle&quot; onclick={toggleDarkMode}&gt;</span></span>
+<span class="giallo-l"><span>		&lt;div id=&quot;uimode-icon&quot;&gt;</span></span>
+<span class="giallo-l"><span>			&lt;div bind:this={sunIcon}&gt;&lt;Icon src={Sun} id=&quot;sun&quot; &gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>			&lt;div bind:this={moonIcon}&gt;&lt;Icon src={Moon} id=&quot;moon&quot;&gt;&lt;/Icon&gt;&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>		&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/button&gt;</span></span>
+<span class="giallo-l"><span>&lt;/div&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;style&gt;</span></span>
+<span class="giallo-l"><span>	#uimode-toggle {</span></span>
+<span class="giallo-l"><span>		border-radius: 20px;</span></span>
+<span class="giallo-l"><span>		width: 24px;</span></span>
+<span class="giallo-l"><span>		height: 24px;</span></span>
+<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	#uimode-icon {</span></span>
+<span class="giallo-l"><span>		width: 18px;</span></span>
+<span class="giallo-l"><span>		height: 18px;</span></span>
+<span class="giallo-l"><span>		margin-left: -5px;</span></span>
+<span class="giallo-l"><span>		margin-top: -1px;</span></span>
+<span class="giallo-l"><span>	}</span></span>
+<span class="giallo-l"><span>&lt;/style&gt;</span></span></code></pre>
+<p>Note that the import statement exchanges .ts with .js - this is maybe not the cleanest way to do things but it avoids errors. Ts is just js with extra steps, after all.</p>
+<p>We can now also import the global uiMode into our layout:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script&gt;</span></span>
+<span class="giallo-l"><span>	let { children } = $props();</span></span>
+<span class="giallo-l"><span>	import Header from &quot;../components/Header.svelte&quot;;</span></span>
+<span class="giallo-l"><span>	import { uiMode } from &quot;../globals.svelte.js&quot;;</span></span>
+<span class="giallo-l"><span>	import Footer from &quot;../components/Footer.svelte&quot;;</span></span>
+<span class="giallo-l"><span>	import &quot;../app.css&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	/** @type {HTMLElement} */</span></span>
+<span class="giallo-l"><span>	let main;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>	$effect(() =&gt; {	</span></span>
+<span class="giallo-l"><span>		if(uiMode.isDarkMode) {</span></span>
+<span class="giallo-l"><span>			main.className = &quot;dark&quot;;</span></span>
+<span class="giallo-l"><span>		} else {</span></span>
+<span class="giallo-l"><span>			main.className = &quot;&quot;;</span></span>
+<span class="giallo-l"><span>		}</span></span>
+<span class="giallo-l"><span>	});</span></span>
+<span class="giallo-l"><span>&lt;/script&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;main class=&quot;&quot; bind:this=&quot;{main}&quot;&gt;</span></span>
+<span class="giallo-l"><span>	&lt;div class=&quot;min-h-screen flex flex-col text-black bg-white dark:text-gray-100 dark:bg-gray-950&quot;&gt;</span></span>
+<span class="giallo-l"><span>		&lt;Header&gt;&lt;/Header&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>		&lt;div class=&quot;grow p-4&quot;&gt;</span></span>
+<span class="giallo-l"><span>			{@render children()}</span></span>
+<span class="giallo-l"><span>		&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>		</span></span>
+<span class="giallo-l"><span>		&lt;Footer&gt;&lt;/Footer&gt;</span></span>
+<span class="giallo-l"><span>	&lt;/div&gt;</span></span>
+<span class="giallo-l"><span>&lt;/main&gt;</span></span></code></pre>
+<p>We bound "main" to a variable similarly to what we did in the header. Now we just needed an effect that responds to the global uiMode and sets the right class on our main element!</p>
+<h1 id="wrapping-up"><a class="zola-anchor" href="#wrapping-up" aria-label="Anchor link for: wrapping-up">wrapping up</a></h1>
+<p>This process has not been without any snags at all, but close to it. Most research was quick, and the biggest problem so far are som faulty compile error popups when running <code>yarn tauri dev</code> that don't affect the build. Annoying, and would be nice to get rid of, but hey.</p>
+<p>Otherwise, this felt like a very streamlined way to get an app template up and running that uses a Rust backend and a web frontend, with a nice Dark Mode toggle built in!</p>
+<p>You can visit the template repo <a rel="external" href="https://github.com/julia-hx/tauri-template">here</a>.</p>
+
+            </section>
+        </article>
+    </main>
+</div>
+
+
+
+            
+                
+            
+
+            
+        </div>
+
+        <div class="right-content">
+            
+    
+    
+
+        </div>
+    </body>
+
+</html>

@@ -222,11 +222,11 @@
             <section class="body">
                 <p>Blogs are neat - harking back to an age of a purer internet, with weird little ecosystems of personal home pages, with html and css written in Notepad++ and no logins or trackers in sight.
 I wanted to carve out such a weird little corner of the internet for myself and my projects and thoughts.</p>
-<p><img src="../cameronsworld_3.png" alt="Cameron&#39;s World - a 90&#39;s internet nostalgia site" /></p>
-<p><em>From <a href="https://www.cameronsworld.net/">Cameron's World</a> - a 90's internet GeoCities nostalgia site.</em></p>
-<p>A static site generator seemed like a decent enough compromise of the modern and the nostalgic/minimalist -  serve html and css and js without any need for a database, server, content management system, and as little fluff as possible,
-without needing to actually write all of that html and css and js. You can also rest more or less assured that the site renders on different devices and browsers.</p>
-<p>In order for this process to be enjoyable I needed to find the right combination of a generator and a template to start from. Having generally been interested in the Rust language lately I found <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/not-matthias/apollo">Apollo</a>.</p>
+<p><img src="../img/cameronsworld_3.png" alt="Cameron&#39;s World - a 90&#39;s internet nostalgia site" /></p>
+<p>But as tempting as it is to be nostalgic for a sillier, more earnest and less hyper-capitalist era of the internet, my previous attempts at writing a site in pure text have turned out frustrating as much as interesting.</p>
+<p>A static site generator seems like a decent compromise of the modern and the nostalgic/minimalist - serve html and css and js without any need for a database, server, content management system, and as little fluff as possible,
+without needing to actually write all of that html and css and js.</p>
+<p>In order for this process to be enjoyable I needed to find the right combination of a generator and a template to start from. Having generally been interested in the Rust language lately I found <a rel="external" href="https://www.getzola.org/">Zola</a> and <a rel="external" href="https://github.com/not-matthias/apollo">Apollo</a>.</p>
 <p>Things I like about this combo:</p>
 <ul>
 <li>super fast to iterate, build, and serve</li>
@@ -238,56 +238,50 @@ without needing to actually write all of that html and css and js. You can also 
 </ul>
 <p>Getting a first version of a site up took very little time, and so far I've found everything to kind of work like I want it to. The design choice to install Zola as a single binary on your system and only have the template and content data in your repo sits right with me - no building of code or downloading of dependency trees, it's fast, reliable so far, and spits out useful errors when I break something.</p>
 <p>The Apollo template was a lucky find - it's actually minimal and includes exactly the stuff I want to have: landing page, articles sorted by date, gallery of projects, and tags. Didn't love the Search feature but it was simple to turn off.</p>
-<p>This is what the markdown the landing page is generated from looks like:</p>
-<pre data-lang="markdown" style="background-color:#2b303b;color:#c0c5ce;" class="language-markdown "><code class="language-markdown" data-lang="markdown"><span>+++
-</span><span>template = &quot;homepage.html&quot;
-</span><span>+++
-</span><span>
-</span><span>&lt;</span><span style="color:#bf616a;">style</span><span>&gt;
-</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-hero </span><span>{
-</span><span>    text-align: center;
-</span><span>    padding: </span><span style="color:#d08770;">2rem 0</span><span>;
-</span><span>}
-</span><span>
-</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-hero-title </span><span>{
-</span><span>    font-size: </span><span style="color:#d08770;">3rem</span><span>;
-</span><span>    margin-bottom: </span><span style="color:#d08770;">1rem</span><span>;
-</span><span>}
-</span><span>
-</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-hero-subtitle </span><span>{
-</span><span>    font-size: </span><span style="color:#d08770;">1.25rem</span><span>;
-</span><span>    margin-bottom: </span><span style="color:#d08770;">1rem</span><span>;
-</span><span>}
-</span><span>
-</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-footer </span><span>{
-</span><span>	font-size: </span><span style="color:#d08770;">0.8rem</span><span>;
-</span><span>}
-</span><span>
-</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">homepage-image </span><span>{
-</span><span>  display: block;
-</span><span>  margin-left: auto;
-</span><span>  margin-right: auto;
-</span><span>  width: </span><span style="color:#d08770;">50%</span><span>;
-</span><span>}
-</span><span>
-</span><span>&lt;/</span><span style="color:#bf616a;">style</span><span>&gt;
-</span><span>
-</span><span>&lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-hero</span><span>&quot;&gt;
-</span><span>    &lt;</span><span style="color:#bf616a;">h1 </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-hero-title</span><span>&quot;&gt;hi I&#39;m julia! ✨&lt;/</span><span style="color:#bf616a;">h1</span><span>&gt;
-</span><span>	&lt;</span><span style="color:#bf616a;">img </span><span style="color:#d08770;">src</span><span>=&quot;</span><span style="color:#a3be8c;">hx_space_inverted.png</span><span>&quot; </span><span style="color:#d08770;">alt</span><span>=&quot;</span><span style="color:#a3be8c;">hx Space Inverted - abstract moody black and white image</span><span>&quot; </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-image</span><span>&quot;&gt; 
-</span><span>    &lt;</span><span style="color:#bf616a;">p </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-hero-subtitle</span><span>&quot;&gt;💜 ...and this is my blog. 💜&lt;/</span><span style="color:#bf616a;">p</span><span>&gt;
-</span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
-</span><span>
-</span><span style="color:#8fa1b3;"># about
-</span><span>
-</span><span>I like to make noise and art on computers and to </span><span style="color:#a3be8c;">```write code```</span><span>.
-</span><span>
-</span><span style="background-color:#4f5b66;color:#c0c5ce;">---
-</span><span>&lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">homepage-footer</span><span>&quot;&gt;
-</span><span>made with &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=&quot;</span><span style="color:#a3be8c;">https://www.getzola.org/</span><span>&quot;&gt;Zola&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;, &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=&quot;</span><span style="color:#a3be8c;">https://github.com/not-matthias/apollo</span><span>&quot;&gt;Apollo&lt;/</span><span style="color:#bf616a;">a</span><span>&gt; and 💜 by julia.hx
-</span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
-</span><span>
-</span></code></pre>
+<p>This is what most of the the markdown the landing page is generated from looks like:</p>
+<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>+++</span></span>
+<span class="giallo-l"><span>template = &quot;homepage.html&quot;</span></span>
+<span class="giallo-l"><span>+++</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span class="z-entity z-name z-tag">style</span><span>&gt;</span></span>
+<span class="giallo-l"><span class="z-entity">.</span><span class="z-entity">homepage-hero</span><span> {</span></span>
+<span class="giallo-l"><span class="z-support">    text-align</span><span>:</span><span class="z-support z-constant"> center</span><span>;</span></span>
+<span class="giallo-l"><span class="z-support">    padding</span><span>:</span><span class="z-constant"> 2</span><span class="z-keyword">rem</span><span class="z-constant"> 0</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-entity">.</span><span class="z-entity">homepage-hero-title</span><span> {</span></span>
+<span class="giallo-l"><span class="z-support">    font-size</span><span>:</span><span class="z-constant"> 3</span><span class="z-keyword">rem</span><span>;</span></span>
+<span class="giallo-l"><span class="z-support">    margin-bottom</span><span>:</span><span class="z-constant"> 1</span><span class="z-keyword">rem</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-entity">.</span><span class="z-entity">homepage-hero-subtitle</span><span> {</span></span>
+<span class="giallo-l"><span class="z-support">    font-size</span><span>:</span><span class="z-constant"> 1.25</span><span class="z-keyword">rem</span><span>;</span></span>
+<span class="giallo-l"><span class="z-support">    margin-bottom</span><span>:</span><span class="z-constant"> 1</span><span class="z-keyword">rem</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-entity">.</span><span class="z-entity">homepage-footer</span><span> {</span></span>
+<span class="giallo-l"><span class="z-support">	font-size</span><span>:</span><span class="z-constant"> 0.8</span><span class="z-keyword">rem</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-entity">.</span><span class="z-entity">homepage-image</span><span> {</span></span>
+<span class="giallo-l"><span class="z-support">  display</span><span>:</span><span class="z-support z-constant"> block</span><span>;</span></span>
+<span class="giallo-l"><span class="z-support">  margin-left</span><span>:</span><span class="z-support z-constant"> auto</span><span>;</span></span>
+<span class="giallo-l"><span class="z-support">  margin-right</span><span>:</span><span class="z-support z-constant"> auto</span><span>;</span></span>
+<span class="giallo-l"><span class="z-support">  width</span><span>:</span><span class="z-constant"> 50</span><span class="z-keyword">%</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"><span>&lt;/</span><span class="z-entity z-name z-tag">style</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span class="z-entity z-name z-tag">div</span><span class="z-entity"> class</span><span>=</span><span class="z-punctuation z-definition z-string">&quot;</span><span class="z-string">homepage-hero</span><span class="z-punctuation z-definition z-string">&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span class="z-entity z-name z-tag">h1</span><span class="z-entity"> class</span><span>=</span><span class="z-punctuation z-definition z-string">&quot;</span><span class="z-string">homepage-hero-title</span><span class="z-punctuation z-definition z-string">&quot;</span><span>&gt;</span><span>hi I&#39;m julia! ✨</span><span>&lt;/</span><span class="z-entity z-name z-tag">h1</span><span>&gt;</span></span>
+<span class="giallo-l"><span>	&lt;</span><span class="z-entity z-name z-tag">img</span><span class="z-entity"> src</span><span>=</span><span class="z-punctuation z-definition z-string">&quot;</span><span class="z-string">hx_space_inverted.png</span><span class="z-punctuation z-definition z-string">&quot;</span><span class="z-entity"> alt</span><span>=</span><span class="z-punctuation z-definition z-string">&quot;</span><span class="z-string">hx Space Inverted</span><span class="z-punctuation z-definition z-string">&quot;</span><span class="z-entity"> class</span><span>=</span><span class="z-punctuation z-definition z-string">&quot;</span><span class="z-string">homepage-image</span><span class="z-punctuation z-definition z-string">&quot;</span><span>&gt;</span><span> s</span></span>
+<span class="giallo-l"><span>    &lt;</span><span class="z-entity z-name z-tag">p</span><span class="z-entity"> class</span><span>=</span><span class="z-punctuation z-definition z-string">&quot;</span><span class="z-string">homepage-hero-subtitle</span><span class="z-punctuation z-definition z-string">&quot;</span><span>&gt;</span><span>💜 ...and this is my blog. 💜</span><span>&lt;/</span><span class="z-entity z-name z-tag">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span class="z-entity z-name z-tag">div</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-markup z-heading">#</span><span class="z-entity z-name"> about</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>I like to make noise and art on computers and to </span><span class="z-markup z-inline z-raw">```</span><span class="z-markup z-inline z-raw">write code</span><span class="z-markup z-inline z-raw">```</span><span>.</span></span>
+<span class="giallo-l"></span></code></pre>
+<p>One early snag I ran into was that a Zola update broke my themes code highlighting - I fixed it by not really fixing it but letting the code blocks render in plain text color and removing some extra fluff I didn't want, such as replacing some icon links that were also broken with plain text in the "COPY" button.</p>
 <p>I've opted to version my generator project and static site separately - I like to be a control freak about versioning drafts where a push to the authoring repo doesn't automatically publish. For when I do want to publish I have added some bash/python scripting that runs <code>zola build</code>, copies the output to the static site repo, commits and pushes the changes.</p>
 <p>Some more scripting will probably happen as I go along, for things such as making new posts. That way I can add cms-like features only where I really want them.</p>
 <p>So far so good!</p>
