@@ -447,9 +447,8 @@ Let&#x27;s create a ts file that can contain global state, &#x2F;src&#x2F;global
         
         <content type="html" xml:base="https://julia-hx.github.io/posts/making-blog/">&lt;p&gt;Blogs are neat - harking back to an age of a purer internet, with weird little ecosystems of personal home pages, with html and css written in Notepad++ and no logins or trackers in sight.
 I wanted to carve out such a weird little corner of the internet for myself and my projects and thoughts.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;..&#x2F;img&#x2F;cameronsworld_3.png&quot; alt=&quot;Cameron&amp;#39;s World - a 90&amp;#39;s internet nostalgia site&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;But as tempting as it is to be nostalgic for a sillier, more earnest and less hyper-capitalist era of the internet, my previous attempts at writing a site in pure text have turned out frustrating as much as interesting.&lt;&#x2F;p&gt;
-&lt;p&gt;A static site generator seems like a decent compromise of the modern and the nostalgic&#x2F;minimalist - serve html and css and js without any need for a database, server, content management system, and as little fluff as possible,
+&lt;p&gt;A static site generator seems like a decent compromise of the modern and the nostalgic&#x2F;minimalist - serve html, css and js without any need for a database, server, content management system, and as little fluff as possible,
 without needing to actually write all of that html and css and js.&lt;&#x2F;p&gt;
 &lt;p&gt;In order for this process to be enjoyable I needed to find the right combination of a generator and a template to start from. Having generally been interested in the Rust language lately I found &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt; and &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;not-matthias&#x2F;apollo&quot;&gt;Apollo&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;Things I like about this combo:&lt;&#x2F;p&gt;
