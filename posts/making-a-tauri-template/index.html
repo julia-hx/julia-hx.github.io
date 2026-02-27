@@ -226,13 +226,13 @@
 <p>But whenever you want to draw text and images and forms and buttons to a screen, a very effective and convenient way of doing so is lurking just around the corner: declarative html and css, and javascript for wiggly things. There's a reason so many apps are made in Electron - so many tools and practices are available to make a responsive and clean UI with web technology.</p>
 <p>On the other hand I'm not alone in having a deep aversion to node.js and npm. It's bloated, the dependency tree is pure insanity, and it's so often used for stuff it's not good at. But with the right integration (not Electron) it's very tempting to use the language of the browser as a UI layer to a codebase in something like Rust or C++.</p>
 <p>This particular approach of combining Rust and HTML I stumbled upon. I probably listen to an unhealthy amount of podcasts, among them several of the <a rel="external" href="https://latenightlinux.com/">Late Night Linux</a> family. They happened to mention some alternatives to Electron, and <a rel="external" href="https://tauri.app/">Tauri</a> jumped out to me since it uses a Rust backend and got good reviews on the podcast. Trying it out it quickly clicked for me.</p>
-<p>So here I'll document the steps I needed to take in order to reach a starting point I like.</p>
+<p>So here I'll document the steps needed in order to build a little template.</p>
 <h1 id="tauri-setup"><a class="zola-anchor" href="#tauri-setup" aria-label="Anchor link for: tauri-setup">tauri setup</a></h1>
-<p>I had to bite the bullet and install node. I decided to install yarn for package managing since I've used it before and liked it slightly better than npm.
-Once that is in place:</p>
+<p>We're not going te get around installing node for this one. Let's use <a rel="external" href="https://yarnpkg.com/">yarn</a> for node package management.</p>
+<p>Once that is in place:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>yarn create tauri app</span></span></code></pre>
-<p>to create the project. The setup cli lets you set the project name ("tauri-template" in my case), pick package management, frontend language and framework, and tells you the next steps to run your project:</p>
-<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>cd tauri-template // your project name here</span></span>
+<p>to create the project. The setup cli lets us set the project name ("tauri-template" in this case), pick package management, frontend language and framework, and tells you the next steps to run your project:</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>cd tauri-template</span></span>
 <span class="giallo-l"><span>yarn</span></span>
 <span class="giallo-l"><span>yarn tauri dev</span></span></code></pre>
 <p>and you've run the first build.</p>
@@ -241,12 +241,12 @@ Once that is in place:</p>
 <span class="giallo-l"><span>export const ssr = false;</span></span></code></pre>
 <p>in order for things to work as expected later on.</p>
 <p>It is worth mentioning here that <a rel="external" href="https://vite.dev/">Vite</a> is a part of the Tauri template as a build tool. We're not going to interact with it much though.</p>
-<p>For this template I chose <a rel="external" href="https://svelte.dev/">Svelte</a> as a frontend framework.</p>
+<p>For this template let's go with <a rel="external" href="https://svelte.dev/">Svelte</a> as a frontend framework.</p>
 <h1 id="svelte"><a class="zola-anchor" href="#svelte" aria-label="Anchor link for: svelte">svelte</a></h1>
 <p>Svelte leans a bit more into a static-site-generation paradigm than similar frameworks such as React or Vue.
-Instead of relying on a virtual DOM it outputs "compiled" html and js. I also like the routing setup - it is represented by the actual folder structure under /src/routes. For this simple template we just need two pages: "home", which is always at /src/routes/+page.svelte, and "about". The second page is added by creating /src/routes/about/+page.svelte. It can contain a placeholder for now:</p>
+Instead of relying on a virtual DOM it outputs "compiled" html and js. The routing setup is intuitive - it is represented by the actual folder structure under /src/routes. For this simple template we just need two pages: "home", which is always at /src/routes/+page.svelte, and "about". The second page is added by creating /src/routes/about/+page.svelte. It can contain a placeholder for now:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;p&gt;About this app&lt;/p&gt;</span></span></code></pre>
-<p>In order to create a shared base layout for both of these pages, so I don't need to reproduce shared elements in multiple places, I create /src/+layout.svelte next to /src/+page.svelte.</p>
+<p>In order to create a shared base layout for both of these pages, so we don't need to reproduce shared elements in multiple places, we can create /src/+layout.svelte next to /src/+page.svelte.</p>
 <p>Multiple layouts can be added to a svelte routes tree, and are applied to all children pages until another layout is found, which is then applied to all following children pages, and so on. For this template a single layout will suffice - let's start with some boilerplate that will render all child pages without adding anything to them at the moment:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&lt;script lang=&quot;ts&quot;&gt;</span></span>
 <span class="giallo-l"><span>    let { children } = $props();</span></span>
@@ -282,10 +282,8 @@ Instead of relying on a virtual DOM it outputs "compiled" html and js. I also li
 <span class="giallo-l"><span>&lt;Footer&gt;&lt;/Footer&gt;</span></span></code></pre>
 <p>Running <code>yarn tauri dev</code> again we can see the components in the layout, and navigate between "home" and "about".</p>
 <p>This is all the basic structure we need for a template! But it doesn't look like much yet. Each .svelte file can contain css as well as html and js. Svelte as a framework really wants you to lean into per-component stylings, but also supports inheritance of styles, so you can define everything yourself or use any css framework or files you want.</p>
-<p>Since I was already facing my fear of frameworks and adding all the modern things (Tauri, Svelte and Vite), I did a little bit of research about the current state of css (when I learned webdev Bootstrap was still fresh!), and a lot of people are using <a rel="external" href="https://tailwindcss.com/">Tailwind</a>.</p>
-<p>Again - tried it out quickly, kind of liked it, so I'll integrate it into my template instead of rolling a bunch of my own css.</p>
+<p>Since we're already integrating many of the modern things (Tauri, Svelte and Vite), let's also use a modern css framework: <a rel="external" href="https://tailwindcss.com/">Tailwind</a>.</p>
 <h1 id="tailwind"><a class="zola-anchor" href="#tailwind" aria-label="Anchor link for: tailwind">tailwind</a></h1>
-<p>Tailwind is also new to me, but I can see the appeal.</p>
 <p>Instead of creating a separate but analogous css structure alongside the project itself, Tailwind leans into using a toolbox of pre-made classes to set css styles in-place. This seems to be a good match with Svelte's approach of styling per-component - more wysiwyg and less inheritance.</p>
 <p>It also boasts a dynamic css compilation that is supposed to result in a smaller css build footprint. Supposing that works as advertised this also plays well into the Tauri/Svelte way of doing things.</p>
 <p>Integrating Tailwind into this template is straight-forward enough. First add the package via yarn:</p>
@@ -394,7 +392,7 @@ Instead of relying on a virtual DOM it outputs "compiled" html and js. I also li
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>:root{</span></span>
 <span class="giallo-l"><span>    font-family: theme(--font-mono);</span></span>
-<span class="giallo-l"><span>    font-size: theme(--text-lg);</span></span>
+<span class="giallo-l"><span>    font-size: theme(--text-base);</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>    font-synthesis: none;</span></span>
 <span class="giallo-l"><span>    text-rendering: optimizeLegibility;</span></span>
@@ -508,13 +506,13 @@ Instead of relying on a virtual DOM it outputs "compiled" html and js. I also li
 <span class="giallo-l"><span>        border-radius: 20px;</span></span>
 <span class="giallo-l"><span>        width: 24px;</span></span>
 <span class="giallo-l"><span>        height: 24px;</span></span>
+<span class="giallo-l"><span>        padding: 0px;</span></span>
 <span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>    #darkmode-icon {</span></span>
 <span class="giallo-l"><span>        width: 18px;</span></span>
 <span class="giallo-l"><span>        height: 18px;</span></span>
-<span class="giallo-l"><span>        margin-left: -5px;</span></span>
-<span class="giallo-l"><span>        margin-top: -1px;</span></span>
+<span class="giallo-l"><span>        margin-left: 3px;</span></span>
 <span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"><span>&lt;/style&gt;</span></span></code></pre>
 <p>Wer're able to access and hide/show the icon containers by creating variables of the correct type and binding them to the elements using <code>bind:this=""</code>.</p>
@@ -561,13 +559,13 @@ Let's create a ts file that can contain global state, /src/globals.svelte.ts, an
 <span class="giallo-l"><span>        border-radius: 20px;</span></span>
 <span class="giallo-l"><span>        width: 24px;</span></span>
 <span class="giallo-l"><span>        height: 24px;</span></span>
+<span class="giallo-l"><span>        padding: 0px;</span></span>
 <span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>    #uimode-icon {</span></span>
 <span class="giallo-l"><span>        width: 18px;</span></span>
 <span class="giallo-l"><span>        height: 18px;</span></span>
-<span class="giallo-l"><span>        margin-left: -5px;</span></span>
-<span class="giallo-l"><span>        margin-top: -1px;</span></span>
+<span class="giallo-l"><span>        margin-left: 3px;</span></span>
 <span class="giallo-l"><span>    }</span></span>
 <span class="giallo-l"><span>&lt;/style&gt;</span></span></code></pre>
 <p>Note that the import statement exchanges .ts with .js - this is maybe not the cleanest way to do things but it avoids errors. Ts is just js with extra steps, after all.</p>
@@ -602,7 +600,7 @@ Let's create a ts file that can contain global state, /src/globals.svelte.ts, an
 <span class="giallo-l"><span>        &lt;Footer&gt;&lt;/Footer&gt;</span></span>
 <span class="giallo-l"><span>    &lt;/div&gt;</span></span>
 <span class="giallo-l"><span>&lt;/main&gt;</span></span></code></pre>
-<p>We bound "main" to a variable similarly to what we did in the header. Now we just needed an effect that responds to the global uiMode and sets the right class on our main element!</p>
+<p>We bound "main" to a variable similarly to what we did in the header. Now we just needed a Svelte effect that responds to the global uiMode state and sets the right class on our main element!</p>
 <h1 id="wrapping-up"><a class="zola-anchor" href="#wrapping-up" aria-label="Anchor link for: wrapping-up">wrapping up</a></h1>
 <p>This process has not been without any snags at all, but close to it. Most research was quick, and the biggest problem so far are som faulty compile error popups when running <code>yarn tauri dev</code> that don't affect the build. Annoying, and would be nice to get rid of, but hey.</p>
 <p>Otherwise, this felt like a very streamlined way to get an app template up and running that uses a Rust backend and a web frontend, with a nice Dark Mode toggle built in!</p>
