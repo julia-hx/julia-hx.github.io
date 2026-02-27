@@ -21,7 +21,9 @@
         <link rel="alternate" type="text/html" href="https://julia-hx.github.io/posts/making-a-tauri-template/"/>
         <id>https://julia-hx.github.io/posts/making-a-tauri-template/</id>
         
-        <content type="html" xml:base="https://julia-hx.github.io/posts/making-a-tauri-template/">&lt;p&gt;Wanting to learn more Rust, making little tools in it is a good way to both learn the language and make something useful (possibly).&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://julia-hx.github.io/posts/making-a-tauri-template/">&lt;p&gt;If you just want to have a look at the template, go &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;julia-hx&#x2F;tauri-template&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Wanting to learn more Rust, making little tools in it is a good way to both learn the language and make something useful (possibly).&lt;&#x2F;p&gt;
 &lt;p&gt;One general question I&#x27;ve been wanting to solve is how to draw the UI.&lt;&#x2F;p&gt;
 &lt;p&gt;I tried out some of the most lightweight solutions first, such as &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;emilk&#x2F;egui&quot;&gt;egui&lt;&#x2F;a&gt;. It&#x27;s basically a Rust version of &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ocornut&#x2F;imgui&quot;&gt;imgui&lt;&#x2F;a&gt;, which I&#x27;ve used a bunch when drawing debug interfaces in Unreal Engine. Immediate mode, everything is written out in code, and you can do fancy layouts if you really really try. I did like it - easily set up via cargo, does what it says.&lt;&#x2F;p&gt;
 &lt;p&gt;But whenever you want to draw text and images and forms and buttons to a screen, a very effective and convenient way of doing so is lurking just around the corner: declarative html and css, and javascript for wiggly things. There&#x27;s a reason so many apps are made in Electron - so many tools and practices are available to make a responsive and clean UI with web technology.&lt;&#x2F;p&gt;
@@ -403,9 +405,10 @@ Let&#x27;s create a ts file that can contain global state, &#x2F;src&#x2F;global
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;lt;&#x2F;main&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;We bound &quot;main&quot; to a variable similarly to what we did in the header. Now we just needed a Svelte effect that responds to the global uiMode state and sets the right class on our main element!&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;wrapping-up&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#wrapping-up&quot; aria-label=&quot;Anchor link for: wrapping-up&quot;&gt;wrapping up&lt;&#x2F;a&gt;&lt;&#x2F;h1&gt;
-&lt;p&gt;This process has not been without any snags at all, but close to it. Most research was quick, and the biggest problem so far are som faulty compile error popups when running &lt;code&gt;yarn tauri dev&lt;&#x2F;code&gt; that don&#x27;t affect the build. Annoying, and would be nice to get rid of, but hey.&lt;&#x2F;p&gt;
+&lt;p&gt;This process has not been without any snags at all, but close to it. Most research was quick, and the biggest problem so far are som weird compile error popups when running &lt;code&gt;yarn tauri dev&lt;&#x2F;code&gt; that don&#x27;t affect the build. Annoying, and would be nice to get rid of, but hey.&lt;&#x2F;p&gt;
 &lt;p&gt;Otherwise, this felt like a very streamlined way to get an app template up and running that uses a Rust backend and a web frontend, with a nice Dark Mode toggle built in!&lt;&#x2F;p&gt;
-&lt;p&gt;You can visit the template repo &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;julia-hx&#x2F;tauri-template&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;As I go along and use the template, I&#x27;ll probably find a number of components and utilities that are re-usable enough to push back into the template repo.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, I removed the Icon package dependency and did a static implementation of a selection of hero icons instead.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Versions used in this template:&lt;&#x2F;p&gt;
 &lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;&amp;quot;dependencies&amp;quot;: {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;

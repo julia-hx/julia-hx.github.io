@@ -220,7 +220,9 @@
             
 
             <section class="body">
-                <p>Wanting to learn more Rust, making little tools in it is a good way to both learn the language and make something useful (possibly).</p>
+                <p>If you just want to have a look at the template, go <a rel="external" href="https://github.com/julia-hx/tauri-template">here</a>.</p>
+<hr />
+<p>Wanting to learn more Rust, making little tools in it is a good way to both learn the language and make something useful (possibly).</p>
 <p>One general question I've been wanting to solve is how to draw the UI.</p>
 <p>I tried out some of the most lightweight solutions first, such as <a rel="external" href="https://github.com/emilk/egui">egui</a>. It's basically a Rust version of <a rel="external" href="https://github.com/ocornut/imgui">imgui</a>, which I've used a bunch when drawing debug interfaces in Unreal Engine. Immediate mode, everything is written out in code, and you can do fancy layouts if you really really try. I did like it - easily set up via cargo, does what it says.</p>
 <p>But whenever you want to draw text and images and forms and buttons to a screen, a very effective and convenient way of doing so is lurking just around the corner: declarative html and css, and javascript for wiggly things. There's a reason so many apps are made in Electron - so many tools and practices are available to make a responsive and clean UI with web technology.</p>
@@ -602,9 +604,10 @@ Let's create a ts file that can contain global state, /src/globals.svelte.ts, an
 <span class="giallo-l"><span>&lt;/main&gt;</span></span></code></pre>
 <p>We bound "main" to a variable similarly to what we did in the header. Now we just needed a Svelte effect that responds to the global uiMode state and sets the right class on our main element!</p>
 <h1 id="wrapping-up"><a class="zola-anchor" href="#wrapping-up" aria-label="Anchor link for: wrapping-up">wrapping up</a></h1>
-<p>This process has not been without any snags at all, but close to it. Most research was quick, and the biggest problem so far are som faulty compile error popups when running <code>yarn tauri dev</code> that don't affect the build. Annoying, and would be nice to get rid of, but hey.</p>
+<p>This process has not been without any snags at all, but close to it. Most research was quick, and the biggest problem so far are som weird compile error popups when running <code>yarn tauri dev</code> that don't affect the build. Annoying, and would be nice to get rid of, but hey.</p>
 <p>Otherwise, this felt like a very streamlined way to get an app template up and running that uses a Rust backend and a web frontend, with a nice Dark Mode toggle built in!</p>
-<p>You can visit the template repo <a rel="external" href="https://github.com/julia-hx/tauri-template">here</a>.</p>
+<p>As I go along and use the template, I'll probably find a number of components and utilities that are re-usable enough to push back into the template repo.</p>
+<p>For example, I removed the Icon package dependency and did a static implementation of a selection of hero icons instead.</p>
 <hr />
 <p>Versions used in this template:</p>
 <pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>&quot;dependencies&quot;: {</span></span>
