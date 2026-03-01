@@ -21,7 +21,7 @@
         <link rel="alternate" type="text/html" href="https://julia-hx.github.io/posts/making-a-tauri-template/"/>
         <id>https://julia-hx.github.io/posts/making-a-tauri-template/</id>
         
-        <content type="html" xml:base="https://julia-hx.github.io/posts/making-a-tauri-template/">&lt;p&gt;If you just want to have a look at the template, go &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;julia-hx&#x2F;tauri-template&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://julia-hx.github.io/posts/making-a-tauri-template/">&lt;p&gt;If you just want to have a look at the template, go &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;julia-hx&#x2F;hexing-tauri&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Wanting to learn more Rust, making little tools in it is a good way to both learn the language and make something useful (possibly).&lt;&#x2F;p&gt;
 &lt;p&gt;One general question I&#x27;ve been wanting to solve is how to draw the UI.&lt;&#x2F;p&gt;
